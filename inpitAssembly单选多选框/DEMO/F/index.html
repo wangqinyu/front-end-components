@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+	<style>
+		html,
+		body {
+			margin: 0;
+			height: 100%;
+			background-color: #f2f2f2;
+		}
+		
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		p {
+			margin: 10px 0;
+		}
+		*[disabled] {
+			opacity: 0.3;
+			cursor: no-drop !important
+		}		
+		.table {
+			border: 0;
+			width: 500px;
+			background-color: #fff;
+			margin: 20px auto;
+			padding: 30px;
+		}
+		table {
+		    display: table;
+		    border-collapse: separate;
+		    border:1px solid #d2d2d2;	
+		}
+		.table td,
+		.table th {
+			padding: 10px 25px;
+			border: 1px solid #d2d2d2;
+		}
+		.table td.ack,
+		.table th.ack {
+			background-color: #2196F3;
+			color: #fff;
+		}		
+		.table td {
+			cursor: pointer;
+		}
+		.table tr.ack {
+			background-color: #2196F3;
+			color: #fff;
+		}
+		.table tr.ack td {
+		    border:1px solid #2196F3;	
+		}
+		button {
+			border-radius: 6px;
+			margin: 10px 0;
+			width: 100%;
+			border: 0;
+			padding: 15px 20px;
+			background-color: #2196F3;
+			color: #fff;
+		}
+	</style>
+
+	<body class="inpit">
+		<div class="table" type="inpit/assembly" formname="table_a">
+			<p>2.5版本以上才修复任意标签可为选项，因此只要是一个DOM节点那么便可做选项</p>
+			<table border="1" cellspacing="0" cellpadding="0" width="100%" radio>
+				<tbody>
+					<tr>
+						<th>标题</th>
+						<th>标题</th>
+						<th>标题</th>
+					</tr>					
+					<tr name="a" value="1-1">
+						<td>1-1</td>
+						<td>Header</td>
+						<td>Header</td>
+					</tr>
+					<tr name="a" value="1-2">
+						<td>1-2</td>
+						<td>Header</td>
+						<td>Header</td>
+					</tr>
+					<tr>
+						<th colspan="3" align="center">标题</th>
+					</tr>
+					<tr name="a" value="1-3">
+						<td>1-3</td>
+						<td>Header</td>
+						<td>Header</td>
+					</tr>					
+					<tr name="a" value="1-4">
+						<td>1-4</td>
+						<td>Header</td>
+						<td>Header</td>
+					</tr>					
+					<tr name="a" value="1-5">
+						<td>1-5</td>
+						<td>Header</td>
+						<td>Header</td>
+					</tr>					
+				</tbody>
+			</table>
+			<button class="btnsw">切换开关 (1-1,1-3,1-4)</button>
+			<button class="sub">查看</button>
+		</div>
+		<div class="table" type="inpit/assembly" formname="table_b" >
+			<table border="1" cellspacing="0" cellpadding="0" width="100%" checkbox>
+				<tbody>
+					<tr>
+						<th>标题</th>
+						<th>标题</th>
+						<th>标题</th>
+					</tr>					
+					<tr name="b" value="1-1">
+						<td>Header</td>
+						<td>Header</td>
+						<td>Header</td>
+					</tr>
+					<tr name="b" value="1-2">
+						<td>Header</td>
+						<td>Header</td>
+						<td>Header</td>
+					</tr>
+					<tr>
+						<th colspan="3" align="center">标题</th>
+					</tr>
+					<tr name="b" value="1-3">
+						<td>Header</td>
+						<td>Header</td>
+						<td>Header</td>
+					</tr>					
+					<tr name="b" value="1-4">
+						<td>Header</td>
+						<td>Header</td>
+						<td>Header</td>
+					</tr>					
+					<tr name="b" value="1-5">
+						<td>Header</td>
+						<td>Header</td>
+						<td>Header</td>
+					</tr>					
+				</tbody>
+			</table>
+			<button class="sub">查看</button>
+		</div>		
+		<div class="table" type="inpit/assembly" formname="table_c" >
+			<table border="1" cellspacing="0" cellpadding="0" width="100%" radio>
+				<tbody>
+					<tr>
+						<td name="c" value="1-1">Header</td>
+						<td name="c" value="1-2">Header</td>
+						<td name="c" value="1-3">Header</td>
+					</tr>
+					<tr>
+						<td name="c" value="2-1">Header</td>
+						<td name="c" value="2-2">Header</td>
+						<td name="c" value="2-3">Header</td>
+					</tr>
+					<tr>
+						<td name="c" value="3-1">Header</td>
+						<td name="c" value="3-2">Header</td>
+						<td name="c" value="3-3">Header</td>
+					</tr>
+				</tbody>
+			</table>
+			<button class="sub">查看</button>
+		</div>
+		<div class="table" id="tabletr" formname="table_d" >
+			<p>这里提供了一个表格列选项，通过on来监听当前选项来识别</p>
+			<table border="1" cellspacing="0" cellpadding="0" width="100%" radio>
+				<tbody>
+					<tr>
+						<th tr-index="1">标题</th>
+						<th tr-index="2">标题</th>
+						<th tr-index="3">标题</th>
+						<th tr-index="4">标题</th>
+					</tr>					
+					<tr>
+						<td name="d" value="1-1">Header</td>
+						<td name="d" value="1-2">Header</td>
+						<td name="d" value="1-3">Header</td>
+						<td name="d" value="1-4">Header</td>
+					</tr>
+					<tr>
+						<td name="d" value="2-1">Header</td>
+						<td name="d" value="2-2">Header</td>
+						<td name="d" value="2-3">Header</td>
+						<td name="d" value="2-4">Header</td>
+					</tr>
+					<tr>
+						<td name="d" value="3-1">Header</td>
+						<td name="d" value="3-2">Header</td>
+						<td name="d" value="3-3">Header</td>
+						<td name="d" value="3-4">Header</td>
+					</tr>
+				</tbody>
+			</table>
+			<button class="sub">查看</button>
+		</div>			
+		
+		<script type="text/javascript" src="../../js/jquery-2.1.0.js"></script>
+		<script type="text/javascript" src="../../js/inpitassembly-2.0.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("[type='inpit/assembly']").inpitassembly({
+					selected:"ack"
+				});
+								
+				$("#tabletr").inpitassembly({
+					selected:"ack",
+					selected_data:[{
+						name:"a",
+						data:["1-3"]
+					}],
+					on:function(e,o){
+						
+						// 这里仅做演示
+						// 复选列自行补充
+						
+						$("[tr-index],#tabletr td").removeClass("ack");
+						$("[tr-index=" + (o.this.obj.index() + 1) + "]").addClass("ack");
+						$("#tabletr tr").find("td:eq(" + o.this.obj.index()  + ")").addClass("ack");
+					},
+					success:function(json){
+						console.log(json)
+					}
+				});
+				
+				$(".btnsw").click(function(){				
+					$("[type='inpit/assembly']").inpitassembly("toggle",[{
+						name:"a",
+						data:["1-1","1-3","1-4"]
+					}])
+				})
+				
+				$("[type='inpit/assembly'],#tabletr").find("button.sub").click(function(){
+					var val = check_result($(this));
+					alert(val[0].data);
+				});				
+			})			
+		</script>
+	</body>
+</html>

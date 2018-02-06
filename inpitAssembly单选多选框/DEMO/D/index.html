@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		html,
+		body {
+			margin: 0;
+			height: 100%;
+			background-color: #f2f2f2;
+		}
+		
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		p {
+			margin: 10px;
+		}
+		
+		.card {
+		    border-top: 1px solid #d2d2d2;
+		    border-bottom: 1px solid #d2d2d2;			
+		    border-left: 1px solid #e6e6e6;
+		    border-right: 1px solid #e6e6e6;
+		    width: 450px;
+		    background-color: #fff;
+		    margin: 20px auto;
+		    display: table;
+		}
+		.card .card_position_x,
+		.card .card_position_y {
+		    width: 100%;
+		    display: -moz-box;
+		    display: -webkit-box;
+		    display: -ms-box;
+		    display: -o-box;
+		    display: box;
+		}
+		.card .card_position_x div[name][value],
+		.card .card_position_y div[name][value] {
+			border-bottom: 1px solid #d6d6d6;
+		    border-left: 1px solid #ddd;
+		    -moz-box-flex: 1;
+		    -webkit-box-flex: 1;
+		    -ms-box-flex: 1;
+		    -o-box-flex: 1;
+		    box-flex: 1;
+		}
+		.card .card_position_x > div[name][value]:nth-child(1) {
+		    border-left: none;
+		}		
+		.card .card_position_x > div[name][value]:last-child {
+		    border-right: none;
+		}	
+
+		.card .card_position_y > div[name][value]:last-child {
+		    border-bottom: none;
+		}
+		
+		
+		.card .card_position_x div[name][value] .tit {
+			cursor: pointer;
+			padding: 10px 20px;
+		    border-bottom:  4px solid rgba(0, 0, 0, 0);
+		    transition: border-bottom .2s;
+		}
+		.card .card_position_x div[name][value].ack > .tit {
+		    border-bottom:  4px solid #257FAD;
+		}
+		
+		.card .card_position_y div[name][value] .tit {
+			cursor: pointer;
+			padding: 10px 20px;
+		    border-left:  4px solid rgba(0, 0, 0, 0);
+		    transition: border-bottom .2s;			
+		}
+		.card .card_position_y div[name][value].ack > .tit {
+		    border-left:  4px solid #257FAD;
+		}
+		
+		.card .card_position_x .cont,
+		.card .card_position_y .cont {
+			width: 100%;
+			display: none;
+		}
+		.card .card_position_x .cont.ack,
+		.card .card_position_y .cont.ack {
+			display: block;
+		}
+	</style>
+
+	<body class="inpit">
+		<div class="card" type="inpit/assembly" formname="a">
+			<div class="card_position_y" style="display: inline-grid;float: left;width: calc(30% - 1px);border-right: 1px solid #d2d2d2;" checkbox>
+				<div name="a" data-tag="one" value="1">
+					<div class="tit">选择卡A</div>
+				</div>
+				<div name="a" data-tag="two" value="2">
+					<div class="tit">选择卡B</div>
+				</div>
+				<div name="a" data-tag="three" value="3">
+					<div class="tit">选择卡C</div>
+				</div>					
+			</div>			
+			<div class="card_position_y" style="width: 70%;float: left">
+				<div class="cont ack" cont-tag="one">
+					<p>
+						内容A
+					</p>
+					<p>
+						使用type=”inpit/assembly”开发选择卡，通过on来监听选择的选项，再处理内容页面。
+					</p>						
+				</div>
+				<div class="cont" cont-tag="two">
+					<p>
+						内容B
+					</p>						
+				</div>
+				<div class="cont" cont-tag="three">
+					<p>
+						内容C
+					</p>					
+				</div>				
+			</div>			
+		</div>
+		
+		<div class="card" type="inpit/assembly" formname="b">		
+			<div class="card_position_y" style="width: 70%;float: left">
+				<div class="cont ack" cont-tag="one">
+					<p>
+						内容A
+					</p>
+					<p>
+						使用type=”inpit/assembly”开发选择卡，通过on来监听选择的选项，再处理内容页面。
+					</p>						
+				</div>
+				<div class="cont" cont-tag="two">
+					<p>
+						内容B
+					</p>						
+				</div>
+				<div class="cont" cont-tag="three">
+					<p>
+						内容C
+					</p>					
+				</div>				
+			</div>	
+			<div class="card_position_y" style="display: inline-grid;float: left;width: calc(30% - 1px);border-right: 1px solid #d2d2d2;" checkbox>
+				<div name="b" data-tag="one" value="1">
+					<div class="tit">选择卡A</div>
+				</div>
+				<div name="b" data-tag="two" value="2">
+					<div class="tit">选择卡B</div>
+				</div>
+				<div name="b" data-tag="three" value="3">
+					<div class="tit">选择卡C</div>
+				</div>					
+			</div>				
+		</div>		
+		
+		<div class="card" type="inpit/assembly" formname="c">			
+			<div class="card_position_x" checkbox>
+				<div name="c" data-tag="one" value="1">
+					<div class="tit">选择卡A</div>
+				</div>
+				<div name="c" data-tag="two" value="2">
+					<div class="tit">选择卡B</div>
+				</div>
+				<div name="c" data-tag="three" value="3">
+					<div class="tit">选择卡C</div>
+				</div>					
+			</div>
+			<div class="card_position_x">
+				<div class="cont ack" cont-tag="one">
+					<p>
+						内容A
+					</p>
+					<p>
+						使用type=”inpit/assembly”开发选择卡，通过on来监听选择的选项，再处理内容页面。
+					</p>						
+				</div>
+				<div class="cont" cont-tag="two">
+					<p>
+						内容B
+					</p>						
+				</div>
+				<div class="cont" cont-tag="three">
+					<p>
+						内容C
+					</p>					
+				</div>				
+			</div>
+		</div>
+		
+		<div class="card" type="inpit/assembly" formname="d">			
+			<div class="card_position_x">
+				<div class="cont ack" cont-tag="one">
+					<p>
+						内容A
+					</p>
+					<p>
+						使用type=”inpit/assembly”开发选择卡，通过on来监听选择的选项，再处理内容页面。
+					</p>						
+				</div>
+				<div class="cont" cont-tag="two">
+					<p>
+						内容B
+					</p>						
+				</div>
+				<div class="cont" cont-tag="three">
+					<p>
+						内容C
+					</p>					
+				</div>				
+			</div>
+			<div class="card_position_x" style="border-top: 1px solid #d2d2d2;" checkbox>
+				<div name="d" data-tag="one" value="1">
+					<div class="tit">选择卡A</div>
+				</div>
+				<div name="d" data-tag="two" value="2">
+					<div class="tit">选择卡B</div>
+				</div>
+				<div name="d" data-tag="three" value="3">
+					<div class="tit">选择卡C</div>
+				</div>					
+			</div>			
+		</div>		
+		
+		<script type="text/javascript" src="../../js/jquery-2.1.0.js"></script>
+		<script type="text/javascript" src="../../js/inpitassembly-2.0.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("[type='inpit/assembly']").inpitassembly({
+					selected:"ack",
+					on:function(e,o){
+						
+						// * ===========
+						// * 通过on来监听
+						// * 针对返回对象中data-tag和cont-tag进行处理
+						// * 实现最终的选择卡效果
+						// * ===========
+						
+						tag(o);
+					}
+				});
+						
+				function tag(o){
+					var obj = o.this.obj,
+						parent = obj.parents("[formname]").attr("formname"),
+						tag = obj.attr("data-tag");
+															
+					$("[formname=" + parent + "]").find("[cont-tag]").removeClass( obj[0].className );
+					$("[formname=" + parent + "]").find("[cont-tag=" + tag + "]").addClass( obj[0].className )					
+				}
+				
+			})				
+		</script>
+	</body>
+</html>

@@ -1,0 +1,155 @@
+﻿
+.pg_cn {
+    position: relative;
+}
+
+    .pg_cn span {
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none;
+        -ms-user-select: none; /*IE10以上*/
+        user-select: none;
+    }
+
+.pg_first {
+    padding: 6px 10px;
+    margin-right: 5px;
+    transition: all 0.2s;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 2px;
+}
+
+    .pg_first:hover {
+        background-color: rgb(37, 221, 61);
+        color: #fff;
+        border: 1px solid rgb(37, 221, 61);
+    }
+
+.pg_prev {
+    padding: 6px 10px;
+    margin-right: 5px;
+    transition: all 0.2s;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 2px;
+}
+
+    .pg_prev:hover {
+        background-color: rgb(37, 221, 61);
+        color: #fff;
+        border: 1px solid rgb(37, 221, 61);
+    }
+
+.pg_m {
+}
+
+.pg_s {
+}
+
+.pg_item {
+    padding: 6px 12px;
+    margin-right: 5px;
+    transition: all 0.2s;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 2px;
+}
+
+    .pg_item:hover {
+        background-color: rgb(37, 221, 61);
+        color: #fff;
+        border: 1px solid rgb(37, 221, 61);
+    }
+
+.pg_next {
+    padding: 6px 10px;
+    margin-right: 5px;
+    transition: all 0.2s;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 2px;
+}
+
+    .pg_next:hover {
+        background-color: rgb(37, 221, 61);
+        color: #fff;
+        border: 1px solid rgb(37, 221, 61);
+    }
+
+.pg_last {
+    padding: 6px 10px;
+    margin-right: 5px;
+    transition: all 0.2s;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 2px;
+}
+
+    .pg_last:hover {
+        background-color: rgb(37, 221, 61);
+        color: #fff;
+        border: 1px solid rgb(37, 221, 61);
+    }
+
+.pg_wrap {
+    padding: 6px 0px;
+    margin-right: 5px;
+    border: 1px solid rgb(221, 221, 221);
+    background: #fff;
+    cursor: text !important;
+    border-radius: 2px;
+}
+
+.pg_input {
+    border: none;
+    width: 70px;
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+}
+
+.pg_jump {
+    padding: 6px 10px;
+    margin-right: 5px;
+    transition: all 0.2s;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 2px;
+}
+
+    .pg_jump:hover {
+        background-color: rgb(37, 221, 61);
+        color: #fff;
+        border: 1px solid rgb(37, 221, 61);
+    }
+
+.pg_current {
+    background-color: rgb(247, 152, 152);
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(247, 152, 152);
+}
+
+    .pg_current:hover {
+        background-color: rgb(247, 152, 152);
+        color: rgb(255, 255, 255);
+        border: 1px solid rgb(247, 152, 152);
+    }
+
+.pg_disabled {
+    cursor: not-allowed !important;
+    border: 1px solid #DDD !important;
+    background-color: #F5F5F5 !important;
+    color: #ACA899 !important;
+}
+
+    .pg_disabled > input {
+        cursor: not-allowed !important;
+        background-color: #F5F5F5 !important;
+        color: #ACA899 !important;
+        visibility: hidden;
+    }
+
+.pg_fixed {
+}

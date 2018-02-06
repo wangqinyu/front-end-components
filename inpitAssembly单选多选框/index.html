@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery - inpit/assembly</title>
+	</head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+	<link rel="stylesheet" href="css/style.css" />
+	<body class="inpit">
+		<div id="inpitassembly" formname="demonstration">
+			<div class="logo">
+				<a href="https://cabbagelol.net" target="_blank">
+					<img src="https://cabbagelol.net/wp-content/themes/ftu/images/logo.png">
+				</a>
+			</div>			
+			<div class="ho" >
+				<h1>inpitassembly 2.5</h1>
+			</div>
+			<h2 class="t">演示</h2>
+			<p>
+				根目录中包含DEMO文件夹，访问它来通过演示项目了解inpitassembly可以做些什么，甚至还有什么可做.
+			</p>
+			<p>
+				inpitassembly不仅仅用于做单选或是复选框
+			</p>
+			<div class="demo">
+				<a href="DEMO/A/index.html" target="_blank">
+					<div class="iframe">
+						<iframe src="DEMO/A/index.html" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+					</div>
+				</a>
+				<a href="DEMO/B/index.html" target="_blank">
+					<div class="iframe">
+						<iframe src="DEMO/B/index.html" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+					</div>
+				</a>
+				<a href="DEMO/C/index.html" target="_blank">
+					<div class="iframe">
+						<iframe src="DEMO/C/index.html" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+					</div>		
+				</a>
+				<a href="DEMO/D/index.html" target="_blank">
+					<div class="iframe">
+						<iframe src="DEMO/D/index.html" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+					</div>		
+				</a>
+				<a href="DEMO/E/index.html" target="_blank">
+					<div class="iframe">
+						<iframe src="DEMO/E/index.html" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+					</div>	
+				</a>
+				<a href="DEMO/F/index.html" target="_blank">
+					<div class="iframe">
+						<iframe src="DEMO/F/index.html" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+					</div>	
+				</a>				
+			</div>
+			
+			
+			<h2 class="t">支持状况</h2>
+			<table border="0" cellspacing="0" cellpadding="0" width="100%">				
+				<tr>
+					<th>谷歌</th>
+					<th>火狐</th>
+					<th>Safari</th>
+					<th>IE</th>
+					<th>Edge</th>
+				</tr>	
+				<tr align="center">
+					<td>支持</td>
+					<td>支持</td>
+					<td>支持</td>
+					<td>不支持</td>
+					<td>支持</td>
+				</tr>					
+			</table>
+			<p>
+				inpitassembly建议使用jquery版本2.0以上；2.5inpitassembly以上完全不支持IE
+			</p>
+			
+			<!-- 安装 -->
+			<h2 class="t">安装</h2>
+			
+			<pre><h2>CDN</h2><code class="html">
+&lt;!-- jquery 2.1 --&gt;				
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://cdn.bootcss.com/jquery/2.1.0/jquery.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- inpit/assembly 2.0 +  --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.cabbagelol.net/inpitassembly/2.5/inpitassembly.js&quot;&gt;&lt;/script&gt;
+			</code></pre>
+			
+			<p>
+				为更新缓存的inpitassembly，在地址后加入时间戳，cdn提供的缓存为30天.
+			</p>
+			<p>
+				当然你也可以随时更改inpitassembly版本，参考下方的版本状况:
+			</p>	
+			
+			<pre><h2>CDN</h2><code class="html">
+&lt;!-- inpit/assembly 1.4 ~ 2.5 --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.cabbagelol.net/inpitassembly/1.4/inpitassembly.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.cabbagelol.net/inpitassembly/2.5/inpitassembly.js&quot;&gt;&lt;/script&gt;
+			</code></pre>	
+			
+			<table border="0" cellspacing="0" cellpadding="0" width="100%">	
+				<tr align="center">
+					<td colspan="7">inpitassembly 版本状况</td>
+				</tr>				
+				<tr align="center">
+					<td>1.0 - 1.3</td>
+					<td>1.4</td>
+					<td>2.0</td>
+					<td>2.1 - 2.2</td>
+					<td>2.3</td>
+					<td>2.4</td>
+					<td>2.5</td>
+				</tr>	
+				<tr align="center">
+					<td>未公布</td>
+					<td>稳定</td>
+					<td>未公布</td>
+					<td>不稳定</td>
+					<td>稳定</td>
+					<td>稳定</td>
+					<td>未公开</td>
+				</tr>					
+			</table>		
+		
+			<!--- 初始 --->
+			<h2 class="t">初始</h2>
+			<pre><h2>js</h2><code class="js">
+$(document).ready(function(){
+	//【例子1】
+	$("#cp").inpitassembly({
+		// 内容
+	});
+	
+	// * ================ 
+	// * 或是
+	// * 你必须注意无论对象是谁，都依旧需要在对象声明一个formname
+	// * 2.2版本以上，name变动为formname，这为区分域命名，而非选项的name
+	// * ================
+	
+	//【例子2】
+	// 为承载1.0版本的声明方式你依旧可以这样写
+	$("[type='inpit/assembly']").inpitassembly({
+		// 内容		
+	});
+})
+				</code>
+			</pre>				
+			<p>
+				通过"$().inpitassembly({})"这样初始inpitassembly控件，无论在何处调用inpitassembly数据或者操作都必须事先这样做.
+			</p>
+			<p>
+				inpitassembly方法中提供大量的属性，以帮助对表单做设置，请参考下方表格：
+			</p>			
+			<table border="0" cellspacing="0" cellpadding="0" width="100%">
+				<tr>
+					<th>参数</th>
+					<th>值</th>
+					<th>默认值</th>
+					<th>注释</th>
+					<th>兼容</th>
+				</tr>
+				<tr>
+					<td>event</td>
+					<td>事件</td>
+					<td>click</td>
+					<td>注册事件方式</td>
+					<td>2.4</td>
+				</tr>					
+				<tr>
+					<td>selected</td>
+					<td>string</td>
+					<td>active</td>
+					<td>选中记号</td>
+					<td>2.3</td>
+				</tr>	
+				<tr>
+					<td>selected_data</td>
+					<td>数组</td>
+					<td></td>
+					<td>标记初始值，如果data:"all",表单下所有选项都会选中</td>
+					<td>2.3</td>
+				</tr>					
+				<tr>
+					<td>ischeck_</td>
+					<td>true / false</td>
+					<td>true</td>
+					<td>是否初始选项，如果复选带有min声明，将取min值前面作为默认选项</td>
+					<td>2.0</td>
+				</tr>
+				<tr>
+					<td>ischeck_class</td>
+					<td>true / false</td>
+					<td>false</td>
+					<td>该属性需要在ischeck_=true状态下可选，在标签中已经设置若干默认值与min="2"情况下，阻止ischeck_自动再标记初始值，这防止出现初始选项应该是D/F，而不是变成A/B/D/F</td>
+					<td>2.0</td>
+				</tr>	
+				<tr>
+					<td>min(event,min)</td>
+					<td>方法事件</td>
+					<td></td>
+					<td>回调当前表单对象/最小值</td>
+					<td>2.3</td>
+				</tr>					
+				<tr>
+					<td>max(event,min)</td>
+					<td>方法事件</td>
+					<td></td>
+					<td>回调当前表单对象/最大值</td>
+					<td>2.3</td>
+				</tr>	
+				<tr>
+					<td>on(state,event)</td>
+					<td>方法事件</td>
+					<td></td>
+					<td>
+						监听事件,state状态,event将返回对象与所有绑定的事件
+							<table border="0" cellspacing="0" cellpadding="0" width="100%">
+								<tr>
+									<th></th>
+									<th>参数</th>
+									<th>注释</th>
+									<th>兼容</th>
+								</tr>
+								<tr>
+									<td rowspan="3">state(string)</td>
+									<td>add</td>
+									<td>勾选</td>
+									<td>2.4</td>
+								</tr>
+								<tr>
+									<td>rem</td>
+									<td>移除状态</td>
+									<td>2.4</td>
+								</tr>
+								<tr>
+									<td>disabled</td>
+									<td>禁用</td>
+									<td>2.4</td>
+								</tr>
+								<tr>
+									<td rowspan="6">event</td>
+									<td>o.this.obj</td>
+									<td>对象</td>
+									<td>2.4</td>
+								</tr>
+								<tr>
+									<td>o.this.parent</td>
+									<td>父对象</td>
+									<td>2.4</td>
+								</tr>								
+								<tr>
+									<td>o.this.length</td>
+									<td>对象的数量</td>
+									<td>2.4</td>
+								</tr>
+								<tr>
+									<td>o.this.type</td>
+									<td>组件类型</td>
+									<td>2.5</td>
+								</tr>								
+								<tr>
+									<td>o.events.event</td>
+									<td>绑定的事件</td>
+									<td>2.4</td>
+								</tr>							
+								<tr>
+									<td>o.events.length</td>
+									<td>绑定事件数量</td>
+									<td>2.4</td>
+								</tr>								
+							</table>						
+					</td>
+					<td>2.4</td>
+				</tr>				
+				<tr>
+					<td>success</td>
+					<td>方法事件</td>
+					<td></td>
+					<td>一旦初始完成则执行success方法下内容</td>
+					<td>2.5</td>
+				</tr>
+			</table>
+			
+			<!-- MIN和MAX回调事件 -->
+			<h3 class="t">MIN和MAX回调事件</h3>
+			<p>
+				inpit/assembly提供选项数量等于min=""/max="",触发min/max回调事件，回调中包含一个对象和数值
+			</p>
+			<pre><h2>js</h2><code class="js">
+$(document).ready(function(){
+	$("[type='inpit/assembly']").inpitassembly({
+		min:function(event,min){
+			// 触发少于min值
+			alert("你选择的" + event.attr("formname") + "表单少于" + min);
+		},
+		max:function(event,max){
+			// 触发少于max值
+			alert("你选择的" + event.attr("formname") + "表单大于" + max);
+		}
+	});	
+})
+				</code>
+			</pre>			
+			
+			<!-- 默认初始值 -->
+			<h3 class="t">默认初始值</h3>
+			<h3>单选</h3>
+			<div type="text/javascript" formname="like">
+				<div class="li" checkbox>
+					<div name="like_a" value="折耳猫">
+						<h2>小猫</h2>
+						<p>折耳猫</p>
+					</div>
+					<div name="like_a" value="哈士奇">
+						<h2>小狗</h2>
+						<p>哈士奇</p>
+					</div>
+					<div name="like_a" value="仓鼠">
+						<h2>鼠</h2>
+						<p>仓鼠</p>
+					</div>
+					<div name="like_a" value="猫头鹰">
+						<h2>鸟</h2>
+						<p>猫头鹰</p>
+					</div>
+				</div>			
+			</div>
+			<h3>复选</h3>
+			<div type="text/javascript" formname="food">
+				<div class="li" min="2" radio>
+					<div name="food_a" value="可口可乐">
+						<h2>饮料</h2>
+						<p>可口可乐</p>
+					</div>
+					<div name="food_a" value="橙汁">
+						<h2>果汁</h2>
+						<p>橙汁</p>
+					</div>
+					<div name="food_a" value="抹茶奶盖">
+						<h2>奶制</h2>
+						<p>抹茶奶盖</p>
+					</div>
+					<div name="food_a" value="七喜">
+						<h2>饮料</h2>
+						<p>七喜</p>
+					</div>
+				</div>				
+			</div>		
+			<pre><h2>js</h2><code class="js">
+$(document).ready(function(){
+	$("[type='inpit/assembly']").inpitassembly({
+		
+		// * ================ 
+		// * selected_data
+		// * formname : 表单名字(可选)
+		// * name : 选项名称
+		// * data : 初始数据,列如["1-1","1-2","1-3"]
+		// * ================			
+		
+		selected_data:[
+			{
+				formname:"like",	
+				name:"like_a", 			
+				data:["仓鼠"]			// 注意单选仅有一个选项
+			},
+			{
+				name:"food_a",
+				data:["橙汁"，"七喜"]
+			},			
+			{
+				name:"",
+				data:"all"
+			}
+		]
+	});	
+})
+				</code>
+			</pre>					
+			<p>初始值会在渲染完毕后对选项标识，记号由selected来决定，如果它没有传进inpit/assembly中，inpit/assembly将使用默认的active.</p>
+			<ul>
+				<li>
+					<b>Q:为何明明设置初始值，但并没有设置？</b>
+					<p>1.检查你的selected_data中的name(也就是表单名)是否初始所在表单之内，如果不是同一个，那么先再创建一个inpit-assembly设置初始值.</p>
+					<p>2.确定你设置name是否存在页面上？如果你是动态创建的inpit/assembly表单，那么请先创建完整DOM节点再来初始inpit/assembly.</p>
+				</li>
+				<li>
+					<b>Q:如何全选初始值？</b>
+					<p>全选表示方法 data:"all"</p>
+				</li>
+			</ul>			
+			
+			<!--- 单选 --->
+			<h3 class="t">单选</h3>
+			<div class="li" checkbox>
+				<div name="a" value="50g">
+					<h2>50G</h2>
+					<p>硬盘</p>
+				</div>
+				<div name="a" value="500g">
+					<h2>500G</h2>
+					<p>硬盘</p>
+				</div>
+				<div name="a" value="1t">
+					<h2>1T</h2>
+					<p>硬盘</p>
+				</div>
+				<div name="a" value="10t">
+					<h2>10T</h2>
+					<p>硬盘</p>
+				</div>
+			</div>
+			<p>标准的单选框，声明为checkbox</p>
+			<pre><h2>HTML</h2><code class="html">
+&lt;div checkbox&gt;
+	&lt;div name=&quot;a&quot; value=&quot;50g&quot;&gt;
+		&lt;h2&gt;50G&lt;/h2&gt;
+		&lt;p&gt;硬盘&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div name=&quot;a&quot; value=&quot;500g&quot;&gt;
+		&lt;h2&gt;500G&lt;/h2&gt;
+		&lt;p&gt;硬盘&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div name=&quot;a&quot; value=&quot;1t&quot;&gt;
+		&lt;h2&gt;1T&lt;/h2&gt;
+		&lt;p&gt;硬盘&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div name=&quot;a&quot; value=&quot;10t&quot;&gt;
+		&lt;h2&gt;10T&lt;/h2&gt;
+		&lt;p&gt;硬盘&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/div&gt;		
+				</code>
+			</pre>
+			<h3>三个合并一起单选</h3>
+			<div class="li" checkbox>
+				<!--b-a-->
+				<div name="b-a" value="B-a-1">
+					<h2>B-A-1</h2>
+					<p>B-A-1</p>
+				</div>
+				<div name="b-a" value="B-a-2">
+					<h2>B-A-2</h2>
+					<p>B-A-2</p>
+				</div>
+				<!--b-b-->
+				<div name="b-b" value="B-b-1">
+					<h2>B-B-1</h2>
+					<p>B-B-1</p>
+				</div>
+				<div name="b-b" value="B-b-2">
+					<h2>B-B-2</h2>
+					<p>B-B-2</p>
+				</div>
+				<div name="b-b" value="B-b-3">
+					<h2>B-B-3</h2>
+					<p>B-B-3</p>
+				</div>
+				<!--b-c-->
+				<div name="变态" value="B-c-1">
+					<h2>B-C-1</h2>
+					<p>B-C-1</p>
+				</div>
+				<div name="变态" value="B-c-2">
+					<h2>B-C-2</h2>
+					<p>B-C-2</p>
+				</div>
+			</div>
+			<p>同一表单不同域的单选组件，通过NAME识别是否同一个表单内，因此你必须注意它是区分大小写的，当然NAME可中文,比如上方B-C内的NAME值为“变态”</p>
+			<pre><h2>HTML</h2><code class="html">
+&lt;div checkbox&gt;
+	&lt;!--b-a--&gt;
+	&lt;div name=&quot;b-a&quot; value=&quot;B-a-1&quot;&gt;
+		&lt;h2&gt;B-A-1&lt;/h2&gt;
+		&lt;p&gt;B-A-1&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div name=&quot;b-a&quot; value=&quot;B-a-2&quot;&gt;
+		&lt;h2&gt;B-A-2&lt;/h2&gt;
+		&lt;p&gt;B-A-2&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;!--b-b--&gt;
+	&lt;div name=&quot;b-b&quot; value=&quot;B-b-1&quot;&gt;
+		&lt;h2&gt;B-B-1&lt;/h2&gt;
+		&lt;p&gt;B-B-1&lt;/p&gt;
+	&lt;/div&gt;				
+	&lt;div name=&quot;b-b&quot; value=&quot;B-b-2&quot;&gt;
+		&lt;h2&gt;B-B-2&lt;/h2&gt;
+		&lt;p&gt;B-B-2&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div name=&quot;b-b&quot; value=&quot;B-b-3&quot;&gt;
+		&lt;h2&gt;B-B-3&lt;/h2&gt;
+		&lt;p&gt;B-B-3&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;!--b-c--&gt;
+	&lt;div name=&quot;变态&quot; value=&quot;B-c-1&quot;&gt;
+		&lt;h2&gt;B-C-1&lt;/h2&gt;
+		&lt;p&gt;B-C-1&lt;/p&gt;
+	&lt;/div&gt;				
+	&lt;div name=&quot;变态&quot; value=&quot;B-c-2&quot;&gt;
+		&lt;h2&gt;B-C-2&lt;/h2&gt;
+		&lt;p&gt;B-C-2&lt;/p&gt;
+	&lt;/div&gt;						
+&lt;/div&gt;		
+				</code>
+			</pre>
+			<h3 class="t">复选</h3>
+			<div class="li" radio>
+				<div name="d-a" value="A1">
+					<h2>A1</h2>
+					<p>A1</p>
+				</div>
+				<div name="d-a" value="A2">
+					<h2>A2</h2>
+					<p>A2</p>
+				</div>
+				<div name="d-a" value="A3">
+					<h2>A3</h2>
+					<p>A3</p>
+				</div>
+				<div name="d-a" value="A4">
+					<h2>A4</h2>
+					<p>A4</p>
+				</div>
+				<div name="d-a" value="A5">
+					<h2>A5</h2>
+					<p>A5</p>
+				</div>
+				<div name="d-a" value="A6">
+					<h2>A6</h2>
+					<p>A6</p>
+				</div>
+				<div name="d-a" value="A7">
+					<h2>A7</h2>
+					<p>A7</p>
+				</div>
+			</div>
+			<p>标准的复选组件，声明为radio；复选含min与max(最小值和最大值)</p>
+			<pre><h2>HTML</h2><code class="html">
+&lt;div radio&gt;
+	&lt;div name=&quot;d-a&quot; value=&quot;A1&quot;&gt;
+		&lt;h2&gt;A1&lt;/h2&gt;
+		&lt;p&gt;A1&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div name=&quot;d-a&quot; value=&quot;A2&quot;&gt;
+		&lt;h2&gt;A2&lt;/h2&gt;
+		&lt;p&gt;A2&lt;/p&gt;
+	&lt;/div&gt;				
+	&lt;div name=&quot;d-a&quot; value=&quot;A3&quot;&gt;
+		&lt;h2&gt;A3&lt;/h2&gt;
+		&lt;p&gt;A3&lt;/p&gt;
+	&lt;/div&gt;				
+	&lt;div name=&quot;d-a&quot; value=&quot;A4&quot;&gt;
+		&lt;h2&gt;A4&lt;/h2&gt;
+		&lt;p&gt;A4&lt;/p&gt;
+	&lt;/div&gt;				
+	&lt;div name=&quot;d-a&quot; value=&quot;A5&quot;&gt;
+		&lt;h2&gt;A5&lt;/h2&gt;
+		&lt;p&gt;A5&lt;/p&gt;
+	&lt;/div&gt;				
+	&lt;div name=&quot;d-a&quot; value=&quot;A6&quot;&gt;
+		&lt;h2&gt;A6&lt;/h2&gt;
+		&lt;p&gt;A6&lt;/p&gt;
+	&lt;/div&gt;				
+	&lt;div name=&quot;d-a&quot; value=&quot;A7&quot;&gt;
+		&lt;h2&gt;A7&lt;/h2&gt;
+		&lt;p&gt;A7&lt;/p&gt;
+	&lt;/div&gt;				
+&lt;/div&gt;			
+				</code>
+			</pre>
+
+			<h3>选项最多5个</h3>
+			<div class="li" max="5" radio>
+				<div name="d-b" value="A1">
+					<h2>A1</h2>
+					<p>A1</p>
+				</div>
+				<div name="d-b" value="A2">
+					<h2>A2</h2>
+					<p>A2</p>
+				</div>
+				<div name="d-b" value="A3">
+					<h2>A3</h2>
+					<p>A3</p>
+				</div>
+				<div name="d-b" value="A4">
+					<h2>A4</h2>
+					<p>A4</p>
+				</div>
+				<div name="d-b" value="A5">
+					<h2>A5</h2>
+					<p>A5</p>
+				</div>
+				<div name="d-b" value="A6">
+					<h2>A6</h2>
+					<p>A6</p>
+				</div>
+				<div name="d-b" value="A7">
+					<h2>A7</h2>
+					<p>A7</p>
+				</div>
+				<div class="add">
+					<h2>增加选项</h2>
+					<p>动态增加数据</p>
+				</div>
+			</div>
+			<p>向radio组件增加max声明，可对复选组件可选最大个数</p>
+			<pre><h2>HTML</h2><code class="html">
+&lt;div max=&quot;5&quot; radio&gt;
+	&lt;div name=&quot;d-b&quot; value=&quot;A1&quot;&gt;
+		&lt;h2&gt;A1&lt;/h2&gt;
+		&lt;p&gt;A1&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div name=&quot;d-b&quot; value=&quot;A2&quot;&gt;
+		&lt;h2&gt;A2&lt;/h2&gt;
+		&lt;p&gt;A2&lt;/p&gt;
+	&lt;/div&gt;				
+	&lt;div name=&quot;d-b&quot; value=&quot;A3&quot;&gt;
+		&lt;h2&gt;A3&lt;/h2&gt;
+		&lt;p&gt;A3&lt;/p&gt;
+	&lt;/div&gt;				
+	&lt;div name=&quot;d-b&quot; value=&quot;A4&quot;&gt;
+		&lt;h2&gt;A4&lt;/h2&gt;
+		&lt;p&gt;A4&lt;/p&gt;
+	&lt;/div&gt;				
+	&lt;div name=&quot;d-b&quot; value=&quot;A5&quot;&gt;
+		&lt;h2&gt;A5&lt;/h2&gt;
+		&lt;p&gt;A5&lt;/p&gt;
+	&lt;/div&gt;				
+	&lt;div name=&quot;d-b&quot; value=&quot;A6&quot;&gt;
+		&lt;h2&gt;A6&lt;/h2&gt;
+		&lt;p&gt;A6&lt;/p&gt;
+	&lt;/div&gt;				
+	&lt;div name=&quot;d-b&quot; value=&quot;A7&quot;&gt;
+		&lt;h2&gt;A7&lt;/h2&gt;
+		&lt;p&gt;A7&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;add&quot;&gt;
+		&lt;h2&gt;增加选项&lt;/h2&gt;
+		&lt;p&gt;动态增加数据&lt;/p&gt;
+	&lt;/div&gt;				
+&lt;/div&gt;		
+				</code>
+			</pre>
+
+			<h3>选项至少3个</h3>
+			<div type='inpit/assembly' formname="clickmin">
+				<div class="li" min="3" radio>
+					<div name="d-c" value="A1">
+						<h2>A1</h2>
+						<p>A1</p>
+					</div>
+					<div name="d-c" value="A2">
+						<h2>A2</h2>
+						<p>A2</p>
+					</div>
+					<div name="d-c" value="A3">
+						<h2>A3</h2>
+						<p>A3</p>
+					</div>
+					<div name="d-c" value="A4">
+						<h2>A4</h2>
+						<p>A4</p>
+					</div>
+					<div name="d-c" value="A5">
+						<h2>A5</h2>
+						<p>A5</p>
+					</div>
+					<div name="d-c" value="A6">
+						<h2>A6</h2>
+						<p>A6</p>
+					</div>
+					<div name="d-c" value="A7">
+						<h2>A7</h2>
+						<p>A7</p>
+					</div>
+				</div>				
+				</div>
+			<p>向radio组件增加min声明，可对复选组件可选最小个数</p>
+			<pre><h2>HTML</h2><code class="html">
+&lt;div min=&quot;3&quot; radio&gt;
+	&lt;div name=&quot;d-c&quot; value=&quot;A1&quot;&gt;
+		&lt;h2&gt;A1&lt;/h2&gt;
+		&lt;p&gt;A1&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div name=&quot;d-c&quot; value=&quot;A2&quot;&gt;
+		&lt;h2&gt;A2&lt;/h2&gt;
+		&lt;p&gt;A2&lt;/p&gt;
+	&lt;/div&gt;				
+	&lt;div name=&quot;d-c&quot; value=&quot;A3&quot;&gt;
+		&lt;h2&gt;A3&lt;/h2&gt;
+		&lt;p&gt;A3&lt;/p&gt;
+	&lt;/div&gt;				
+	&lt;div name=&quot;d-c&quot; value=&quot;A4&quot;&gt;
+		&lt;h2&gt;A4&lt;/h2&gt;
+		&lt;p&gt;A4&lt;/p&gt;
+	&lt;/div&gt;				
+	&lt;div name=&quot;d-c&quot; value=&quot;A5&quot;&gt;
+		&lt;h2&gt;A5&lt;/h2&gt;
+		&lt;p&gt;A5&lt;/p&gt;
+	&lt;/div&gt;				
+	&lt;div name=&quot;d-c&quot; value=&quot;A6&quot;&gt;
+		&lt;h2&gt;A6&lt;/h2&gt;
+		&lt;p&gt;A6&lt;/p&gt;
+	&lt;/div&gt;				
+	&lt;div name=&quot;d-c&quot; value=&quot;A7&quot;&gt;
+		&lt;h2&gt;A7&lt;/h2&gt;
+		&lt;p&gt;A7&lt;/p&gt;
+	&lt;/div&gt;			
+&lt;/div&gt;		
+				</code>
+			</pre>
+
+			<h3>最多选择3个,至少1个</h3>
+			<div type='inpit/assembly' formname="clickmin">		
+				<div class="li" min="1" max="3" radio>
+					<div name="c" value="A1">
+						<h2>A1</h2>
+						<p>A1</p>
+					</div>
+					<div name="c" value="A2">
+						<h2>A2</h2>
+						<p>A2</p>
+					</div>
+					<div name="c" value="A3">
+						<h2>A3</h2>
+						<p>A3</p>
+					</div>
+					<div name="c" value="A4">
+						<h2>A4</h2>
+						<p>A4</p>
+					</div>
+					<div name="c" value="A5">
+						<h2>A5</h2>
+						<p>A5</p>
+					</div>
+					<div name="c" value="A6">
+						<h2>A6</h2>
+						<p>A6</p>
+					</div>
+				</div>
+			</div>
+			<p>一旦同时声明min和max，复选的个数将在min和max之间</p>
+			<pre><h2>HTML</h2><code class="html">
+&lt;div min=&quot;3&quot;  radio&gt;
+	&lt;div name=&quot;d-c&quot; value=&quot;A1&quot;&gt;
+		&lt;h2&gt;A1&lt;/h2&gt;
+		&lt;p&gt;A1&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div name=&quot;d-c&quot; value=&quot;A2&quot;&gt;
+		&lt;h2&gt;A2&lt;/h2&gt;
+		&lt;p&gt;A2&lt;/p&gt;
+	&lt;/div&gt;				
+	&lt;div name=&quot;d-c&quot; value=&quot;A3&quot;&gt;
+		&lt;h2&gt;A3&lt;/h2&gt;
+		&lt;p&gt;A3&lt;/p&gt;
+	&lt;/div&gt;				
+	&lt;div name=&quot;d-c&quot; value=&quot;A4&quot;&gt;
+		&lt;h2&gt;A4&lt;/h2&gt;
+		&lt;p&gt;A4&lt;/p&gt;
+	&lt;/div&gt;				
+	&lt;div name=&quot;d-c&quot; value=&quot;A5&quot;&gt;
+		&lt;h2&gt;A5&lt;/h2&gt;
+		&lt;p&gt;A5&lt;/p&gt;
+	&lt;/div&gt;				
+	&lt;div name=&quot;d-c&quot; value=&quot;A6&quot;&gt;
+		&lt;h2&gt;A6&lt;/h2&gt;
+		&lt;p&gt;A6&lt;/p&gt;
+	&lt;/div&gt;				
+	&lt;div name=&quot;d-c&quot; value=&quot;A7&quot;&gt;
+		&lt;h2&gt;A7&lt;/h2&gt;
+		&lt;p&gt;A7&lt;/p&gt;
+	&lt;/div&gt;			
+&lt;/div&gt;		
+				</code>
+			</pre>
+			
+			<h3 class="t">禁用</h3>
+			<h3>单选</h3>			
+			<div class="li" checkbox>
+				<div name="checkbox_disabled" value="A1">
+					<h2>A1</h2>
+					<p>A1</p>
+				</div>
+				<div name="checkbox_disabled" value="A3">
+					<h2>A3</h2>
+					<p>A3</p>
+				</div>
+				<div name="checkbox_disabled" value="A4">
+					<h2>A4</h2>
+					<p>A4-disabled</p>
+				</div>
+				<div name="checkbox_disabled" value="A5">
+					<h2>A5</h2>
+					<p>A5-disabled</p>
+				</div>
+			</div>
+			<h3>复选</h3>			
+			<div class="li" radio>
+				<div name="radio_disabled" value="A3">
+					<h2>A3</h2>
+					<p>A3-disabled</p>
+				</div>
+				<div name="radio_disabled" value="A4">
+					<h2>A4</h2>
+					<p>A4-disabled</p>
+				</div>				
+				<div name="radio_disabled" value="A1">
+					<h2>A1</h2>
+					<p>A1</p>
+				</div>
+				<div name="radio_disabled" value="A2">
+					<h2>A2</h2>
+					<p>A2</p>
+				</div>
+			</div>			
+			<p>就像平常一样，禁用组件仅仅在该标签上声明disabled即可，此时你再无法选中，为了让该按钮显示不可用，可用加入下方样式表.</p>
+			<pre><h2>HTML</h2><code class="html">
+&lt;div class=&quot;li&quot; radio&gt;
+	&lt;div name=&quot;disabled&quot; value=&quot;A1&quot;&gt;
+		&lt;h2&gt;A1&lt;/h2&gt;
+		&lt;p&gt;A1&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div name=&quot;disabled&quot; value=&quot;A2&quot;&gt;
+		&lt;h2&gt;A2&lt;/h2&gt;
+		&lt;p&gt;A2&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div name=&quot;disabled&quot; value=&quot;A3&quot; disabled&gt;
+		&lt;h2&gt;A3&lt;/h2&gt;
+		&lt;p&gt;A3-disabled&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div name=&quot;disabled&quot; value=&quot;A4&quot; disabled&gt;
+		&lt;h2&gt;A4&lt;/h2&gt;
+		&lt;p&gt;A4-disabled&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div name=&quot;disabled&quot; value=&quot;A5&quot;&gt;
+		&lt;h2&gt;A5&lt;/h2&gt;
+		&lt;p&gt;A5&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div name=&quot;disabled&quot; value=&quot;A6&quot;&gt;
+		&lt;h2&gt;A6&lt;/h2&gt;
+		&lt;p&gt;A6&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/div&gt;	
+				</code>
+			</pre>			
+			<pre><h2>CSS</h2><code class="CSS">
+*[disabled] {
+	opacity: .3;
+	cursor:no-drop !important
+}
+				</code>
+			</pre>	
+			
+			<b>初始化禁用</b>
+			<pre><h2>JS</h2><code class="js">
+$().inpitassembly("disabled",[{
+	
+	// * ==========================
+	// * 这里指域(也就是选项中的name)，非表单formname
+	// * ==========================
+	
+	name:"demonstration",
+	data:["A4","A5"]
+}])
+				</code>
+			</pre>
+			
+			<h3 class="t">额外Class</h3>
+			<div class="li" radio>
+				<div name="disabled" value="G1">
+					<h2>G1</h2>
+					<p>G1</p>
+				</div>
+				<div name="disabled" class="style_a" value="G2">
+					<h2>G2</h2>
+					<p>G2</p>
+				</div>
+				<div name="disabled" class="style_b" value="G3">
+					<h2>G3</h2>
+					<p>点击我查看</p>
+				</div>
+				<div name="disabled" class="style_c" value="G4">
+					<h2>G4</h2>
+					<p>G4</p>
+				</div>
+				<div name="disabled" class="style_d" value="G5">
+					<h2>G5</h2>
+					<p>点击我，解除模糊</p>
+				</div>
+			</div>
+			<p>你可以向选项添加额外Class，虽然不太重要；inpit/assembly会保留选中记号外的Class，因此可单独为每个选项引用一个Class或多个.</p>
+			
+			<h3 class="t">返回</h3>
+			<p>
+				注册一个获取事件，为获取该域的值，标签需要放置在表单内而不在外面，那么check_result($(this))返回一个对象回来.<br>
+				当然inpit/assembly是可以指定获取表单，如果你需要这样做，则在check_result()方法传入表单名称或是表单下任意对象，参考下面"返回规则"说明.
+			</p>
+			<pre><h2>JS</h2><code class="js">
+$("[type='inpit/assembly']").find("button").click(function(){
+	
+	// * ==========================
+	// * 向check_result方法传本身
+	// * 如果你忘记，inpit/assembly依旧会提醒你
+	// * ==========================
+	var val = check_result($(this));
+	
+	// val会输出下方"对象"格式
+	console.log(val)
+})
+				</code>
+			</pre>
+			<pre><h2>对象</h2><code class="json">
+[{data:[...]}, {parameter: ()=>{},()=>{}}, {obj: Object}]	
+				</code>
+			</pre>	
+			<table border="0" cellspacing="0" cellpadding="0" width="100%">
+				<tr>
+					<th>参数</th>
+					<th>值</th>
+					<th>注释</th>
+				</tr>
+				<tr>
+					<td>val</td>
+					<td>对象</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>val[0].data</td>
+					<td>数组</td>
+					<td>返回选中的选项</td>
+				</tr>	
+				<tr>
+					<td>val[1].parameter</td>
+					<td>方法对象</td>
+					<td>inpit/assembly方法与inpit/assembly初始值</td>
+				</tr>				
+				<tr>
+					<td>val[2].obj</td>
+					<td>方法对象</td>
+					<td>返回inpit/assembly对象</td>
+				</tr>				
+			</table>			
+			
+			<button>获取</button>
+		</div>
+		
+		<div class="flex">
+			<h3 class="t">多个inpitassembly</h3>
+			<div id="ack_two" formname="ack_two">
+				<h4>复选表单ack_two</h4>
+				<div class="li" min="2" radio>
+					<div name="two-a" value="a-1">
+						<h2>A1</h2>
+						<p>A1</p>						
+					</div>
+					<div name="two-a" value="a-2">
+						<h2>A2</h2>
+						<p>A2</p>						
+					</div>
+					<div name="two-a" value="a-3">
+						<h2>A3</h2>
+						<p>A3</p>					
+					</div>
+					<div name="two-a" value="a-4">
+						<h2>A4</h2>
+						<p>A4</p>					
+					</div>					
+				</div>
+				<button>获取ack_two表单:</button>
+			</div>
+			<div type='inpit/assembly' formname="ack_three">
+				<h4>单选表单ack_three</h4>
+				<div class="li"  checkbox>
+					<div name="ack_three-a" value="a-1">
+						<h2>A1</h2>
+						<p>A1</p>						
+					</div>
+					<div name="ack_three-a" value="a-2">
+						<h2>A2</h2>
+						<p>A2</p>						
+					</div>
+					<div name="ack_three-a" value="a-3">
+						<h2>A3</h2>
+						<p>A3</p>					
+					</div>
+					<div name="ack_three-a" value="a-4">
+						<h2>A4</h2>
+						<p>A4</p>					
+					</div>					
+				</div>
+				<button>获取ack_three表单</button>
+			</div>			
+			
+			<p>你将可以在页面上共存多个inpit/assembly,但你必须注意几个要点:</p>
+			<ol>
+				<li>规定了组件name仅仅区分inpit/assembly域，如果不同域之间下选项name值如果还是相等，那么它依旧认为在同一选择表单中，当然inpit/assembly是故意保留这样设定.你仅仅为选项的name命名新值即可</li>
+			</ol>
+			<pre><h2>HTML</h2><code class="html">
+&lt;div type=&#x27;inpit/assembly&#x27; name=&quot;ack_two&quot;&gt;
+	&lt;h4&gt;复选表单ack_two&lt;/h4&gt;
+	&lt;div class=&quot;li&quot; min=&quot;2&quot; radio&gt;
+		&lt;div name=&quot;two-a&quot; value=&quot;a-1&quot;&gt;
+			&lt;h2&gt;A1&lt;/h2&gt;
+			&lt;p&gt;A1&lt;/p&gt;						
+		&lt;/div&gt;
+		&lt;div name=&quot;two-a&quot; value=&quot;a-2&quot;&gt;
+			&lt;h2&gt;A2&lt;/h2&gt;
+			&lt;p&gt;A2&lt;/p&gt;						
+		&lt;/div&gt;
+		&lt;div name=&quot;two-a&quot; value=&quot;a-3&quot;&gt;
+			&lt;h2&gt;A3&lt;/h2&gt;
+			&lt;p&gt;A3&lt;/p&gt;					
+		&lt;/div&gt;
+		&lt;div name=&quot;two-a&quot; value=&quot;a-4&quot;&gt;
+			&lt;h2&gt;A4&lt;/h2&gt;
+			&lt;p&gt;A4&lt;/p&gt;					
+		&lt;/div&gt;					
+	&lt;/div&gt;
+	&lt;button&gt;获取ack_two表单:&lt;/button&gt;
+&lt;/div&gt;
+&lt;div type=&#x27;inpit/assembly&#x27; name=&quot;ack_three&quot;&gt;
+	&lt;h4&gt;单选表单ack_three&lt;/h4&gt;
+	&lt;div class=&quot;li&quot;  checkbox&gt;
+		&lt;div name=&quot;ack_three-a&quot; value=&quot;a-1&quot;&gt;
+			&lt;h2&gt;A1&lt;/h2&gt;
+			&lt;p&gt;A1&lt;/p&gt;						
+		&lt;/div&gt;
+		&lt;div name=&quot;ack_three-a&quot; value=&quot;a-2&quot;&gt;
+			&lt;h2&gt;A2&lt;/h2&gt;
+			&lt;p&gt;A2&lt;/p&gt;						
+		&lt;/div&gt;
+		&lt;div name=&quot;ack_three-a&quot; value=&quot;a-3&quot;&gt;
+			&lt;h2&gt;A3&lt;/h2&gt;
+			&lt;p&gt;A3&lt;/p&gt;					
+		&lt;/div&gt;
+		&lt;div name=&quot;ack_three-a&quot; value=&quot;a-4&quot;&gt;
+			&lt;h2&gt;A4&lt;/h2&gt;
+			&lt;p&gt;A4&lt;/p&gt;					
+		&lt;/div&gt;					
+	&lt;/div&gt;
+	&lt;button&gt;获取ack_three表单&lt;/button&gt;
+&lt;/div&gt;
+				</code>
+			</pre>
+			<pre><h2>JS</h2><code class="js">
+$("[type='inpit/assembly']").inpitassembly({
+	selected:"ack"
+});
+$("[type='inpit/assembly']").find("button").click(function(){
+	var val = check_result($(this));
+	alert(val[0].data);
+});	
+			</code></pre>				
+		</div>
+		
+		<!-- 绑定事件 -->
+		<div class="flex">
+			<h3 class="t">绑定事件</h3>
+			<div id="cp_two" formname="dbclick_form">
+				<h3>单选选项：mouseover</h3>
+				<div class="li" checkbox>
+					<div name="dbclick_form-a" value="F-1-1">
+						<h2>F-1-1</h2>
+						<p>F-1-1</p>
+					</div>
+					<div name="dbclick_form-a" value="F-1-2">
+						<h2>F-1-2</h2>
+						<p>F-1-2</p>
+					</div>
+				</div>
+				<h3>复选选项：mouseover</h3>
+				<div class="li" radio>
+					<div name="dbclick_form-b" value="F-1-1">
+						<h2>F-1-1</h2>
+						<p>F-1-1</p>
+					</div>
+					<div name="dbclick_form-b" value="F-1-2">
+						<h2>F-1-2</h2>
+						<p>F-1-2</p>
+					</div>
+				</div>				
+			</div>
+			<div id="cp_three" formname="dbclick_form">
+				<h3>单选选项：dblclick</h3>
+				<div class="li" checkbox>
+					<div name="dbclick_form-c" value="F-2-1">
+						<h2>F-2-1</h2>
+						<p>F-1</p>
+					</div>
+					<div name="dbclick_form-c" value="F-2-2">
+						<h2>F-2-2</h2>
+						<p>F-2-2</p>
+					</div>
+				</div>
+				<h3>复选选项：dblclick</h3>
+				<div class="li" radio>
+					<div name="dbclick_form-d" value="F-1-1">
+						<h2>F-1-1</h2>
+						<p>F-1-1</p>
+					</div>
+					<div name="dbclick_form-d" value="F-1-2">
+						<h2>F-1-2</h2>
+						<p>F-1-2</p>
+					</div>
+				</div>				
+			</div>	
+			<p>你可以对表单绑定事件作出更改，inpit/assembly的默认绑定为单击事件，通过event来设置</p>
+			<pre><h2>JS</h2><code class="js">
+$("#cp_two").inpitassembly({event:"mouseout"});	
+
+$("#cp_three").inpitassembly({event:"dblclick"});
+
+// * =====================
+// * 当然你也可以同时绑定多个事件
+// * =====================
+
+$().inpitassembly({event:"dblclick click"});	
+				</code>
+			</pre>			
+		</div>
+		
+		<!-- 内部创建 -->
+		<div>
+			<h3 class="t">内部创建新的inpitassembly</h3>
+			<div type='inpit/assembly' formname="inside_onelist">
+				<h4>复选表单inside_onelist</h4>
+				<div class="li" min="1" radio>
+					<div name="inside_one" value="inside_one-1">
+						<h2>A1</h2>
+						<p>A1</p>						
+					</div>
+					<div name="inside_one" value="inside_one-2">
+						<h2>A2</h2>
+						<p>A2</p>						
+					</div>
+					<div name="inside_one" value="inside_one-3">
+						<h2>A3</h2>
+						<p>A3</p>						
+					</div>					
+					
+					<div type='inpit/assembly' formname="inside_twolist" class="inside">
+						<h4>单选表单inside_twolist</h4>
+						<div class="li"  checkbox>
+							<div name="inside_two" value="inside_two-1">
+								<h2>A1</h2>
+								<p>A1</p>						
+							</div>
+							<div name="inside_two" value="inside_two-2">
+								<h2>A2</h2>
+								<p>A2</p>						
+							</div>
+							<div name="inside_two" value="inside_two-3">
+								<h2>A3</h2>
+								<p>A3</p>					
+							</div>
+							<div name="inside_two" value="inside_two-4">
+								<h2>A4</h2>
+								<p>A4</p>				
+							</div>
+
+							<div type='inpit/assembly' formname="inside_threelist" class="inside">
+								<h4>单选表单inside_threelist</h4>
+								<div class="li"  checkbox>
+									<div name="inside_three" value="inside_three-1">
+										<h2>A1</h2>
+										<p>A1</p>						
+									</div>
+									<div name="inside_three" value="inside_three-2">
+										<h2>A2</h2>
+										<p>A2</p>						
+									</div>
+									<div name="inside_three" value="inside_three-3">
+										<h2>A3</h2>
+										<p>A3</p>					
+									</div>
+									<div name="inside_three" value="inside_three-4">
+										<h2>A4</h2>
+										<p>A4</p>					
+									</div>					
+								</div>
+								<button>获取inside_threelist值</button>
+								<div class="insideonelist">获取外部inside_onelist值</div>	
+							</div>
+							
+							<div type='inpit/assembly' formname="ack_four" class="inside">
+								<h4>复选表单ack_three</h4>
+								<div class="li"  radio>
+									<div name="ack_four-a" value="a-1">
+										<h2>A1</h2>
+										<p>A1</p>						
+									</div>
+									<div name="ack_four-a" value="a-2">
+										<h2>A2</h2>
+										<p>A2</p>						
+									</div>
+									<div name="ack_four-a" value="a-3">
+										<h2>A3</h2>
+										<p>A3</p>					
+									</div>
+									<div name="ack_four-a" value="a-4">
+										<h2>A4</h2>
+										<p>A4</p>					
+									</div>					
+								</div>
+								<button>获取ack_four表单</button>
+							</div>							
+							
+						</div>
+						<button>获取inside_twolist值</button>
+					</div>					
+				</div>	
+				<button>获取inside_onelist值</button>				
+			</div>
+			<b>内部选项约定</b>
+			<p>你能在type='inpit/assembly'内部再创建无数个type='inpit/assembly'，你唯一需要注意的是formname和选项的name,虽然允许创建内部但表单(type='inpit/assembly')无法作为一个选项存在,因为type='inpit/assembly'会跳过非选项内容，type='inpit/assembly'规定包含name和value同时存在为选项</p>
+			<br>
+			<b>返回规则</b>
+			<pre><h2>JS</h2><code class="js">
+$().find("button").click(function(){
+	// * ==========================
+	// * check_result
+	// * ==========================
+	var val = check_result($(this));
+	console.log(val);
+});
+				</code>
+			</pre>			
+			<p>我们向check_result()传递了一个$(this)，要知道type='inpit/assembly'会取当前点击的父域，也就是当前这个表单下所有选中，因此我们点击"inside_threelist"按钮则返回inside_threelist表单数据，点击"inside_twolist"按钮则返回inside_twolist表单和inside_threelist表单数据，这是因为inside_twolist表单下包含inside_threelist表单，它会作为inside_twolist表单的一份子</p>		
+			<p>假如我传的不是当前表单，而是其他表单？</p>				
+			<pre><h2>JS</h2><code class="js">
+$().find("button").click(function(){
+	var val = check_result("ack");
+	console.log(val);
+});
+
+// * ================ 
+// * 或是
+// * ================
+
+$().click(function(){
+	var val = check_result( $("[formname=ack]").find("*") );
+	console.log(val);
+});
+
+				</code>
+			</pre>
+			<p>二种方法都一样能获取指定表单数据，唯一不同传入类型，如果是一个对象你则需要在后面添加.find("*")，因为inpit/assembly取父表单，仅这样写$("[formname=name]")无法取到数据，因为它的表单不在父级上；如果你传一个表单名字，那么inpit/assembly则直接寻找该表单下选中数据</p>
+			<p>通过上方例子你可以在当前表单获取另一个表单下值，它们的结果都是相等</p>
+		</div>	
+		
+		<div class="flex">
+			<h3 class="t"><span>更新</span>监听表单 - on()</h3>			
+				<div id="cp_four" formname="cp_four">
+					<h3>表单cp_four</h3>
+					<h3>单选</h3>
+					<div class="li" checkbox>
+						<div name="cp_four-a" value="F-1-1">
+							<h2>F-1-1</h2>
+							<p>F-1-1</p>
+						</div>
+						<div name="cp_four-a" value="F-1-2">
+							<h2>F-1-2</h2>
+							<p>F-1-2</p>
+						</div>
+						<div name="cp_four-a" value="F-1-3" disabled>
+							<h2>F-1-2</h2>
+							<p>F-1-2</p>
+						</div>						
+					</div>
+					<h3>复选</h3>
+					<div class="li" radio>
+						<div name="cp_four-b" value="F-1-1">
+							<h2>F-1-1</h2>
+							<p>F-1-1</p>
+						</div>
+						<div name="cp_four-b" value="F-1-2" disabled>
+							<h2>F-1-2</h2>
+							<p>F-1-2</p>
+						</div>	
+					</div>
+				</div>
+				<div class="cp_fouron"></div>
+				<div class="cp_fiveon"></div>				
+				<div id="cp_five" formname="cp_five">
+					<h3>表单cp_five</h3>
+					<h3>单选</h3>
+					<div class="li" checkbox>
+						<div name="cp_five-a" value="F-1-1">
+							<h2>F-1-1</h2>
+							<p>F-1-1</p>
+						</div>
+						<div name="cp_five-a" value="F-1-2">
+							<h2>F-1-2</h2>
+							<p>F-1-2</p>
+						</div>
+						<div name="cp_five-a" value="F-1-3" disabled>
+							<h2>F-1-2</h2>
+							<p>F-1-2</p>
+						</div>						
+					</div>
+					<h3>复选</h3>
+					<div class="li" radio>
+						<div name="cp_five-b" value="F-1-1">
+							<h2>F-1-1</h2>
+							<p>F-1-1</p>
+						</div>
+						<div name="cp_five-b" value="F-1-2" disabled>
+							<h2>F-1-2</h2>
+							<p>F-1-2</p>
+						</div>				
+					</div>	
+				</div>					
+			<p>通过on方法返回事件，在inpitassembly方法内on会回调事件以方便监听表单下发生什么.</p>
+			<p>在inpitassembly中，包含2个参数，第一个参数返回状态(add/rem/disabled);第二个参数返回对象，如下：</p>
+			<pre><h2>JS</h2><code class="js">
+$().inpitassembly({
+	on:function(e,o){
+		$(&quot;.cp_fiveon&quot;).prepend(&quot;&lt;div&gt;&quot; + (function(){
+			let val = e;
+			if(val == &quot;add&quot;)
+				val = &quot;选中&quot; + o.this.obj.attr(&quot;value&quot;);
+			else if(val == &quot;rem&quot;)
+				val = &quot;移除&quot;;
+			else if(val == &quot;disabled&quot;)
+				val = &quot;选项禁用&quot;;
+				
+			return val;
+		})() + &quot;，所属&quot; + (function(){
+			let type = o.this.type;
+			if(type == &quot;radio&quot;){
+				type = &quot;(复选)&quot;
+			}else if(type == &quot;checkbox&quot;){
+				type = &quot;(单选)&quot;
+			}
+			return type;
+		})() + &quot;表单：&quot; + o.this.parent.attr(&quot;formname&quot;) +  &quot;&lt;/div&gt;&quot;); 
+	}
+});
+				</code>
+			</pre>			
+			<pre><h2>对象</h2><code class="json">
+this:{	
+	obj:Object, 			// 当前对象
+	parent:Object,			// 父对象
+	type:"",			// checkbox或radio
+	length:0 			// 对象的数量
+},
+events:{	
+	event:event,			// 绑定的事件
+	length:0 			// 绑定事件数量
+}
+				</code>
+			</pre>	
+			<!-- 其他  -->
+			<h3 class="t"><span>新增</span>其他</h3>	
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+				<tr>
+					<th>方法</th>
+					<th>例子</th>
+					<th>注释</th>
+					<th>兼容</th>
+				</tr>
+				<tr>
+					<td>delete</td>
+					<td>
+						<pre><h2>JS</h2><code class="js">
+$().inpitassembly("delete",[{
+	name:"",
+	data:[""]
+}])
+						</code></pre>												
+					</td>
+					<td>删除选项，这里是指删除整个DOM节点</td>
+					<td>2.4</td>
+				</tr>
+				<tr>
+					<td>remove</td>
+					<td>
+						<pre><h2>JS</h2><code class="js">
+$().inpitassembly("remove",[{
+	name:"",
+	data:[""]
+}])
+						</code></pre>												
+					</td>
+					<td>移除选项，选项不在是选中状态中</td>
+					<td>2.5</td>
+				</tr>				
+				<tr>
+					<td>add</td>
+					<td>
+						<pre><h2>JS</h2><code class="js">
+$().inpitassembly("add",[{
+	name:"",
+	data:[""]
+}])
+						</code></pre>												
+					</td>
+					<td>标记选项</td>
+					<td>2.5</td>
+				</tr>				
+				<tr>
+					<td>disabled</td>
+					<td>
+						<pre><h2>JS</h2><code class="js">
+$().inpitassembly("disabled",[{
+	name:"",
+	data:[""]
+}])
+						</code></pre>												
+					</td>
+					<td>禁用特定或多个选项</td>
+					<td>2.4</td>
+				</tr>				
+				<tr>
+					<td>toggle</td>
+					<td>
+						<pre><h2>JS</h2><code class="js">
+$().inpitassembly("toggle",[{
+	name:"",
+	data:[""]
+}])
+						</code></pre>												
+					</td>
+					<td>启动/禁用开关</td>
+					<td>2.5</td>
+				</tr>				
+			</table>
+		</div>
+		<div>
+			<p align="right">—— 感谢你的阅读</p>
+		</div>
+
+		<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+		<script type="text/javascript" src="js/inpitassembly-2.0.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#inpitassembly").inpitassembly({
+					selected:"ack",				
+					ischeck_:true,
+					ischeck_class:true,
+					max:function(event,max){
+						alert("最大"+max)
+					},
+					min:function(event,min){
+						alert("最小"+min)
+					},
+					on:function(e,o){
+						console.log(o)
+					}
+				});
+				
+				$("#inpitassembly").inpitassembly("disabled",[{
+					name:"checkbox_disabled",
+					data:["A4","A5"]
+				},{
+					name:"radio_disabled",
+					data:["A3","A4"]
+				}])		
+
+				$("#inpitassembly").find("button").click(function(){
+					var val = check_result($(this));
+					alert(val[0].data);
+				});	
+				
+				
+				$("#ack_two").inpitassembly({
+					selected:"ack",
+					ischeck_:true,
+					ischeck_class:false,
+					max:function(event,max){
+						alert("最大"+max)
+					},
+					min:function(event,min){
+						alert("最小"+min)
+					}
+				});
+				$("#ack_two").find("button").click(function(){
+					var val = check_result($(this));
+					alert(val[0].data);
+				});	
+				
+				$("#cp_two").inpitassembly({event:"mouseover"});		
+				$("#cp_three").inpitassembly({event:"dblclick"});							
+					
+					
+					
+				$("#cp_four").inpitassembly({
+					on:function(e,o){
+						$(".cp_fouron").prepend("<div>" + (function(){
+							let val = e;
+							if(val == "add")
+								val = "选中" + o.this.obj.attr("value");
+							else if(val == "rem")
+								val = "移除";
+							else if(val == "disabled")
+								val = "选项禁用";
+								
+							return val;
+						})() + "，所属" + (function(){
+							let type = o.this.type;
+							if(type == "radio"){
+								type = "(复选)"
+							}else if(type == "checkbox"){
+								type = "(单选)"
+							}
+							return type;
+						})() + "表单：" + o.this.parent.attr("formname") +  "</div>");
+					}
+				});
+				$("#cp_five").inpitassembly({
+					on:function(e,o){
+						$(".cp_fiveon").prepend("<div>" + (function(){
+							let val = e;
+							if(val == "add")
+								val = "选中" + o.this.obj.attr("value");
+							else if(val == "rem")
+								val = "移除";
+							else if(val == "disabled")
+								val = "选项禁用";
+								
+							return val;
+						})() + "，所属" + (function(){
+							let type = o.this.type;
+							if(type == "radio"){
+								type = "(复选)"
+							}else if(type == "checkbox"){
+								type = "(单选)"
+							}
+							return type;
+						})() + "表单：" + o.this.parent.attr("formname") +  "</div>");
+					}
+				});
+				
+				
+				$("[type='inpit/assembly']").inpitassembly({
+					selected:"ack",
+					selected_data:[
+						{
+							formname:"like",
+							name:"like_a",
+							data:["仓鼠"]
+						},{
+							formname:"food",
+							name:"food_a",
+							data:["橙汁","七喜","抹茶奶盖"]
+						}
+					],
+					max:function(event,max){
+						alert("最大"+max)
+					},
+					min:function(event,min){
+						alert("最小"+min)
+					}					
+				});
+				
+				$("[type='inpit/assembly']").find("button").click(function(){
+					var val = check_result($(this));
+					alert(val[0].data);
+				});					
+				$(".insideonelist").click(function(){
+					var val = check_result("inside_onelist");
+					alert(val[0].data);
+				});			
+			})			
+			
+			// 高亮代码
+
+			hljs.initHighlightingOnLoad();
+			
+			// 模拟动态数据
+			var objadd = $(".add"),
+				objadd_inx = 8;
+				
+				objadd.click(function() {
+					objadd.before(
+						`
+							<div name="d-b" value="A`+objadd_inx+`">
+								<h2>A` + objadd_inx + `</h2>
+								<p>A` + objadd_inx + `</p>
+							</div>						
+						`
+					);
+					++objadd_inx;
+				});
+		</script>
+	</body>
+</html>

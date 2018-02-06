@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="nw-paging-default1.css" rel="stylesheet" />
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="max-width: 380px;height: 650px;margin: 0px auto;border: 1px solid #ddd;padding:0px 10px;">
+        <div id="content" style="height:600px;"></div>
+        <div style="text-align: center;">
+            <div id="page"></div>
+        </div>
+    </div>
+    <script src="../nw-paging.min.js"></script>
+    <script>
+        var source = [],  //数据源
+            i = 0,   //用于循环
+            pageSize = 6;  //每页数据条数
+
+        //加入100条数据到数据源，模拟数据
+        for (i; i < 100; i++) {
+            source.push({
+                title: "第" + (i + 1) + "条新闻",
+                content: "新闻内容"
+            });
+        }
+
+
+        var content = document.getElementById("content");  //操作的目标dom
+        var aim = document.getElementById("page");   //用于放分页插件的dom
+
+        //插件实例化
+        nw.paging(aim, {
+            total: Math.ceil(source.length / pageSize),
+            current: 1,
+            prevText: "<<",
+            nextText: ">>",
+            showPage: 5,
+            clickBack: function (api) {
+                setPage(api.getConfig().current);
+            },
+            initBack: function (api) {
+                setPage(api.getConfig().current);
+            }
+        });
+
+        //根据插件的页码获取数据源的数据并设置content的内容
+        function setPage(curr) {
+            var start = (curr - 1) * pageSize,
+                end = (curr - 1) * pageSize + pageSize,
+                arr = source.slice(start, end);
+            content.innerHTML = "";
+            for (i = 0; i < arr.length; i++) {
+                content.innerHTML = content.innerHTML + '<p>' + arr[i].title + '</p><p>' + arr[i].content + '<p><hr>';
+            }
+        }
+    </script>
+</body>
+
+</html>

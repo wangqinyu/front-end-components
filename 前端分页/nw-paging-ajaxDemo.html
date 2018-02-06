@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="nw-paging-default0.css" rel="stylesheet" />
+    <title>自制分页最新重制版ajax实例</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        table td, th {
+            padding: 3px 26px;
+            border: 1px solid #0094ff;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;margin-top:30px;"></h1>
+    <div style="text-align:center;margin:30px 0px;border:1px solid #000;padding:10px;">
+        设置后台返回的total：<input type="number" class="pageTotal" value="300" style="width:80px;" />&nbsp;
+        设置后台返回的current：<input type="number" class="pageIndex" value="1" style="width:80px;" />&nbsp;
+        设置显示行数pageSize：<input type="number" class="pageSize" value="15" style="width:80px;" />&nbsp;
+        设置传到后台的关键词：<input type="text" class="searchText" />&nbsp;&nbsp;<button class="searchBtn">查询</button>(设置只针对该按钮点击有用)
+    </div>
+    <div style="width:800px;margin:0px auto;">
+        <div class="container" style="height:520px;text-align:center;margin-bottom:10px;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>列一</th>
+                        <th>列二</th>
+                        <th>列三</th>
+                        <th>列四</th>
+                        <th>列五</th>
+                        <th>列六</th>
+                        <th>列七</th>
+                        <th>列八</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div id="page0"></div><br /><br />
+    </div>
+
+    <script src="nw-paging.min.js"></script>
+    <script src="../../NW-Utils/nw-ajax.js"></script>
+    <script type="text/javascript">
+
+        var div0 = document.getElementById("page0");
+
+        var api = nw.paging(div0, {
+            showPage: 10,
+            showType: 1,
+            prevText: "上一页",
+            nextText: "下一页",
+            jumpText: "跳转",
+            clickDraw: false,   //因为是异步请求，取消点击时的默认重绘,由API控制重绘
+            clickBack: function (api) {
+                getAjaxData(api.getConfig().current);
+            },
+            initBack: function (api) {
+                getAjaxData();
+            }
+        });
+
+        function getAjaxData(pageIndex, pageSize, pageTotal, searchText) {
+            nw.ajax({
+                url: "http://localhost:64100/Paging/AjaxPage",
+                type: "post",
+                data: { pageIndex: pageIndex, pageSize: pageSize, pageTotal: pageTotal, searchText: searchText },
+                success: function (json) {
+					console.log(json);     //输出返回的数据信息  实际使用在这里处理返回的数据信息
+                    api.refresh(json.current, json.total);    //处理数据后利用API重绘插件
+                }
+            });
+        }
+    </script>
+</body>
+</html>

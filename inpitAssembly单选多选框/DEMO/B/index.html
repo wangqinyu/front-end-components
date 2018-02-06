@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="../../css/default.min.css">
+	<style>
+		html,
+		body {
+			margin: 0;
+			height: 100%;
+			background-color: #0080ff;
+		}
+		
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		p {
+			margin: 10px 0;
+		}
+		.radio {
+			background-color: #fff;
+			position: absolute;
+			top: calc(50% - 150px);
+			height: 300px;
+			width: 100%;
+		}
+		.radio > h2 {
+			width: 900px;
+			margin: 20px auto;
+		}
+		.radio_list {
+			width: 900px;
+			margin: 0 auto;
+		}
+		.radio_list > div{
+			position: relative;
+		    float: left;
+		    width: calc(33.333% - 40px);
+		    margin: 0 0 0 10px;
+		    height: 100%;
+		    border: 4px solid #d2d2d2;
+		    border-radius: 6px;
+		    padding: 40px 10px;
+		    font-size: 40px;
+		}
+		.radio_list > div * {
+			width: 100%;
+			text-align: center;
+		}
+		.radio_list > div.ack {
+		    overflow: hidden;
+			color: #0080FF;
+			border: 4px solid #0080FF;
+			background-color: rgba(0, 128, 255, 0.06);
+		}		
+		.radio_list > div.ack:after {
+			content: "";
+		    position: absolute;
+		    right: -50px;
+		    bottom: -50px;
+		    width: 100px;
+		    height: 100px;
+		    transform: rotate(45deg);
+		    background-color: #0080FF;
+		}		
+		.radio_list > div.ack:before {
+		    content: "√";
+		    position: absolute;
+		    right: 6px;
+		    bottom: 0;
+		    transform: rotate(0);
+		    color: #fff;
+		    z-index: 2;
+		}
+		.radio .button {
+			display: inline-block;
+		    width: 100%;
+		    margin: 0 auto;
+		    position: relative;
+		}					
+		.radio button {
+			width: 300px;
+		    margin: 15px auto;
+		    display: block;
+		    border: 0;
+		    background-color: #0080ff;
+		    color: #fff;
+		    padding: 15px 0;
+		    font-size: 20px;
+		    border-radius: 6px;
+		}
+	</style>
+
+	<body class="inpit" type="inpit/assembly" formname="ack">
+		<div class="radio">
+			<h2>
+				VIP 会员购买
+			</h2>			
+			<div class="radio_list" checkbox>
+				<div name="a" value="1/月-标准">
+					<div>1/月</div>
+				</div>
+				<div name="a" value="12/月-优惠">
+					<div>12/月</div>
+				</div>			
+				<div name="a" value="2/年-优惠">
+					<div>2/年</div>
+				</div>			
+			</div>
+			<div class="button">
+				<button>立即支付</button>
+			</div>
+			
+		</div>
+
+		<script type="text/javascript" src="../../js/jquery-2.1.0.js"></script>
+		<script type="text/javascript" src="../../js/inpitassembly-2.0.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("[type='inpit/assembly']").inpitassembly({
+					selected:"ack"
+				});
+				$("[type='inpit/assembly']").find("button").click(function(){
+					var val = check_result($(this));
+					alert(val[0].data);
+				});				
+			})			
+		</script>
+	</body>
+</html>

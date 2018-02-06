@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		html,
+		body {
+			margin: 0;
+			height: 100%;
+			background-color: #f2f2f2;
+		}
+		
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		p {
+		    margin: 10px 0;
+		    border-left: 4px solid #404040;
+		    padding: 0 20px;
+		}
+		button {
+			display: block;
+			border: 0;
+			margin: 5px 0;
+			border-radius: 6px;
+			color: #fff;
+			padding: 5px 10px;
+		}
+		b {
+			display: block;
+			margin: 0 0 20px 0;
+		}
+		
+		/* 按钮  */
+		*[radio] [name][value],
+		*[checkbox] [name][value]{
+			cursor: pointer;
+			font-size: 15px;
+			display: inline-flex;
+		}
+		
+		*[radio] [name][value][disabled],
+		*[checkbox] [name][value][disabled]{
+			opacity: .3;
+			cursor:no-drop !important
+		}
+		
+		*[formname] {
+			background-color: #fbfbfb;
+			padding: 10px;
+		}
+		
+		/* 布局 */
+		.radio_ {
+			display: inline-block;
+		}
+		.radio_ > div{
+			width: 100%;
+			margin: 5px 0;
+		}		
+		.radio[name][value] .input {
+			position: relative;
+			width:20px;
+			height:20px;
+			margin: 0 10px 0 0;
+			border-radius: 6px;
+			background-color: #ececec;
+			transform: scale(1);
+		}
+		.radio[name][value].active .input {
+			background-color: #2196F3;
+			animation: radio .2s;
+		}
+		@keyframes radio{
+			0%{transform: scale(1)}
+			50%{transform: scale(1.4)}
+			100%{transform: scale(1)}
+		}
+		.radio[name][value].active .input:after {
+		    content: '';
+		    position: absolute;
+		    left: 3px;
+		    top: 5px;
+		    width: 11px;
+		    height: 4px;
+		    border-left: 3px solid #ffffff;
+		    border-bottom: 3px solid #ffffff;
+		    transform: rotate(-51deg);			
+		}		
+		
+		.checkbox_ {
+			display: inline-block;
+		}
+		.checkbox_ > div{
+			width: 100%;
+			margin: 5px 0;
+		}		
+		.checkbox[name][value] .input {
+			position: relative;
+			width:20px;
+			height:20px;
+			margin: 0 10px 0 0;
+			border-radius: 50%;
+			background-color: #ececec;
+		}
+		.checkbox[name][value].active .input:after {
+		    content: '';
+		    position: absolute;
+		    left: calc(50% - 3px);
+		    top: calc(50% - 3px);
+		    width: 0;
+		    height: 0;
+		    background-color: #fff;
+		    border-radius: 50%;
+		    border: 3px solid #fff !important;
+		    transform: rotate(-51deg);	
+			animation: radio .6s;
+		}
+		@keyframes checkbox{
+			0%{transform: scale(1)}
+			50%{transform: scale(2)}
+			100%{transform: scale(1)}
+		}		
+		.checkbox_ {
+			display: inline-block;
+		}
+		.checkbox_ > div{
+			width: 100%;
+			margin: 5px 0;
+		}		
+		.checkbox[name][value] .switch {
+			position: relative;
+		    width: 80px;
+		    height: 30px;
+		    border-radius: 30px;
+	        border: 1px solid #d4d4d4;
+		    background-color: #ececec;
+		    transition:background-color .2s;
+		}	
+		.checkbox[name][value] .switch:after {
+		    content: '';
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    width: 26px;
+		    height: 26px;
+		    border-radius: 50%;
+			background-color: #fff;
+		    border: 2px solid #ddd;
+		    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+		    border-radius: 50%;	
+		    transform: scale(1.2);
+		    transition: left .2s;
+		}			
+		.checkbox[name][value].active .switch:after {
+			content: '';
+		    position: absolute;
+		    left: 50px;
+		    width: 26px;
+		    height: 26px;
+		    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+		    border-radius: 50%;
+		}
+		.checkbox[name][value] .switch.val:before {
+		    content: 'OFF';
+		    position: absolute;
+		    width: calc(100% - 20px);
+		    text-align: right;
+		    padding: 5px 10px;
+		    top: 0;
+		    left: 0;
+		    color: #999;
+		}		
+		.checkbox[name][value].active .switch.val:before {
+		    content: 'ON';
+		    text-align: left;
+		    color: #fff;
+		}		
+		
+		/*颜色*/
+		/*蓝色*/
+		.radio[name][value].active .blue,
+		.checkbox[name][value].active .blue {
+			background-color: #2196F3;		
+		}
+		.checkbox[name][value].active .blue:after {
+		    border: 2px solid #2196F3;
+		}
+		/*紫色*/
+		.radio[name][value].active .violet,
+		.checkbox[name][value].active .violet {
+			background-color: violet;		
+		}
+		.checkbox[name][value].active .violet:after {
+		    border: 2px solid violet;
+		}		
+		/*绿色*/
+		.radio[name][value].active .green,
+		.checkbox[name][value].active .green {
+			background-color: green;		
+		}
+		.checkbox[name][value].active .green:after {
+		    border: 2px solid green;
+		}
+		
+		/*页面上style*/		
+		.isclick {
+			background-color: #fff;
+		    padding: 20px 50px;
+		    width: 800px;
+		    margin: 0 auto;
+		}
+		.isclick .col-6{
+			display: inline-flex;
+		    margin: 2.5px 0;
+		}
+		.isclick .col-3{
+			display: inline-flex;
+		    margin: 10px 0;
+		    width: calc(33.333% - 24px);
+		}				
+	</style>
+
+	<body>
+		<div class="isclick">
+			<h1>inpitassembly btnstyle</h1>
+			<p>inpitassembly基础上写的，包含标准的单选和复选/开关样式</p>
+			<div class="col-6" type="inpit/assembly" formname="radioa">			
+				<div class="radio_" radio>
+					<b>复选</b>
+					<div class="radio" name="radioone" value="1">
+						<div class="input blue"></div>
+						复选按钮
+					</div>
+					<div class="radio" name="radioone" value="2">
+						<div class="input blue"></div>
+						复选按钮					
+					</div>
+					<div class="radio" name="radioone" value="3" disabled>
+						<div class="input blue"></div>
+						复选按钮					
+					</div>
+					<div class="radio" name="radioone" value="4" disabled>
+						<div class="input blue"></div>
+						复选按钮					
+					</div>
+					<button>获取</button>
+				</div>
+			</div>
+			<div class="col-6" type="inpit/assembly" formname="checkboxa">			
+				<div class="checkbox_" checkbox>
+					<b>单选</b>
+					<div class="checkbox" name="checkboxone" value="1">
+						<div class="input blue"></div>
+						单选按钮
+					</div>
+					<div class="checkbox" name="checkboxone" value="2">
+						<div class="input blue"></div>
+						单选按钮					
+					</div>
+					<div class="checkbox" name="checkboxone" value="3" disabled>
+						<div class="input blue"></div>
+						单选按钮					
+					</div>
+					<div class="checkbox" name="checkboxone" value="4" disabled>
+						<div class="input blue"></div>
+						单选按钮					
+					</div>
+					<button>获取</button>
+				</div>
+			</div>
+			<div class="col-6" type="inpit/assembly" formname="radiob">			
+				<div class="radio_" radio>
+					<b>复选</b>
+					<div class="radio" name="radiotwo" value="1">
+						<div class="input violet"></div>
+						复选按钮
+					</div>
+					<div class="radio" name="radiotwo" value="2">
+						<div class="input violet"></div>
+						复选按钮					
+					</div>
+					<div class="radio" name="radiotwo" value="3" disabled>
+						<div class="input violet"></div>
+						复选按钮					
+					</div>
+					<div class="radio" name="radiotwo" value="4" disabled>
+						<div class="input violet"></div>
+						复选按钮					
+					</div>
+					<button>获取</button>
+				</div>
+			</div>
+			<div class="col-6" type="inpit/assembly" formname="checkboxb">			
+				<div class="checkbox_" checkbox>
+					<b>单选</b>
+					<div class="checkbox" name="checkboxtwo" value="1">
+						<div class="input violet"></div>
+						单选按钮
+					</div>
+					<div class="checkbox" name="checkboxtwo" value="2">
+						<div class="input violet"></div>
+						单选按钮					
+					</div>
+					<div class="checkbox" name="checkboxtwo" value="3" disabled>
+						<div class="input violet"></div>
+						单选按钮					
+					</div>
+					<div class="checkbox" name="checkboxtwo" value="4" disabled>
+						<div class="input violet"></div>
+						单选按钮					
+					</div>
+					<button>获取</button>
+				</div>
+			</div>			
+			<div class="col-6" type="inpit/assembly" formname="radioc">			
+				<div class="radio_" radio>
+					<b>复选</b>
+					<div class="radio" name="radiothree" value="1">
+						<div class="input green"></div>
+						复选按钮
+					</div>
+					<div class="radio" name="radiothree" value="2">
+						<div class="input green"></div>
+						复选按钮					
+					</div>
+					<div class="radio" name="radiothree" value="3" disabled>
+						<div class="input green"></div>
+						复选按钮					
+					</div>
+					<div class="radio" name="radiothree" value="4" disabled>
+						<div class="input green"></div>
+						复选按钮					
+					</div>
+					<button>获取</button>
+				</div>
+			</div>
+			<div class="col-6" type="inpit/assembly" formname="checkboxc">			
+				<div class="checkbox_" checkbox>
+					<b>单选</b>
+					<div class="checkbox" name="checkboxthree" value="1">
+						<div class="input green"></div>
+						单选按钮
+					</div>
+					<div class="checkbox" name="checkboxthree" value="2">
+						<div class="input green"></div>
+						单选按钮					
+					</div>
+					<div class="checkbox" name="checkboxthree" value="3" disabled>
+						<div class="input green"></div>
+						单选按钮					
+					</div>
+					<div class="checkbox" name="checkboxthree" value="4" disabled>
+						<div class="input green"></div>
+						单选按钮					
+					</div>
+					<button>获取</button>
+				</div>
+			</div>	
+			
+			<h2>开关</h2>
+			<div class="col-3" type="inpit/assembly" formname="switcha">			
+				<div class="checkbox_" radio>
+					<b>复选</b>
+					<div class="checkbox" name="radiothree" value="1">
+						<div class="switch blue val"></div>
+					</div>
+					<div class="checkbox" name="radiothree" value="2">
+						<div class="switch blue"></div>
+					</div>
+					<div class="checkbox" name="radiothree" value="3" disabled>
+						<div class="switch blue"></div>
+					</div>
+					<div class="checkbox" name="radiothree" value="4" disabled>
+						<div class="switch blue"></div>
+					</div>					
+					<button>获取</button>
+				</div>
+			</div>			
+			<div class="col-3" type="inpit/assembly" formname="switchb">			
+				<div class="checkbox_" radio>
+					<b>复选</b>
+					<div class="checkbox" name="radiothree" value="1">
+						<div class="switch violet val"></div>
+					</div>
+					<div class="checkbox" name="radiothree" value="2">
+						<div class="switch violet"></div>
+					</div>
+					<div class="checkbox" name="radiothree" value="3" disabled>
+						<div class="switch violet"></div>
+					</div>
+					<div class="checkbox" name="radiothree" value="4" disabled>
+						<div class="switch violet"></div>
+					</div>					
+					<button>获取</button>
+				</div>
+			</div>
+			<div class="col-3" type="inpit/assembly" formname="switchc">			
+				<div class="checkbox_" radio>
+					<b>复选</b>
+					<div class="checkbox" name="radiothree" value="1">
+						<div class="switch green val"></div>
+					</div>
+					<div class="checkbox" name="radiothree" value="2">
+						<div class="switch green"></div>
+					</div>
+					<div class="checkbox" name="radiothree" value="3" disabled>
+						<div class="switch green"></div>
+					</div>
+					<div class="checkbox" name="radiothree" value="4" disabled>
+						<div class="switch green"></div>
+					</div>					
+					<button>获取</button>
+				</div>
+			</div>			
+		</div>
+		
+		<script type="text/javascript" src="../../js/jquery-2.1.0.js"></script>
+		<script type="text/javascript" src="../../js/inpitassembly-2.0.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("[type='inpit/assembly']").inpitassembly({
+					selected_data:[{
+						name:"radioone",
+						data:["1"]
+					},
+					{
+						name:"radiotwo",
+						data:["1"]
+					},
+					{
+						name:"radiothree",
+						data:["1"]
+					},
+					{
+						name:"checkboxa",
+						data:["1"]
+					},
+					{
+						name:"checkboxb",
+						data:["1"]
+					},
+					{
+						name:"checkboxc",
+						data:["1"]
+					},
+					{
+						name:"switcha",
+						data:["1","4"]
+					},
+					{
+						name:"switchb",
+						data:["1","4"]
+					},
+					{
+						name:"switchc",
+						data:["1","4"]
+					}]
+				});
+				$("[type='inpit/assembly']").find("button").click(function(){
+					var val = check_result($(this));
+					alert(val[0].data);
+					console.log(val);
+				});				
+			})				
+		</script>
+	</body>
+</html>

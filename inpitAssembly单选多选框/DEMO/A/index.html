@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="../../css/default.min.css">
+	<style>
+		html,
+		body {
+			margin: 0;
+			height: 100%;
+			background-color: #f2f2f2;
+		}
+		
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		p {
+			margin: 10px 0;
+		}
+		*[disabled] {
+			opacity: 0.3;
+			cursor: no-drop !important
+		}		
+		.book {
+			position: relative;
+			background: #fff;
+			margin: 20px auto;
+			width: 400px;
+			height: 600px;
+			border-radius: 6px;
+			overflow: hidden;
+		    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.33), 0 15px 20px rgba(0, 0, 0, 0.33), 0 3px 0px rgba(0, 0, 0, 0.13), 0 5px 0px rgba(0, 0, 0, 0.13), 0 10px 0px rgba(0, 0, 0, 0.13);
+		}
+		.book .head {
+			background-color: #535353;
+			color: #fff;
+			text-align: center;
+			font-size: 19px;
+			padding: 20px 0;
+		}
+		.book .book_list {
+			min-height: 600px;
+			position: relative;
+		}
+		.book .book_list:before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 40px;
+			height: 100%;
+			width: 1px;
+			background-color: #f00;
+		}
+		.book .book_list:after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 50px;
+			height: 100%;
+			width: 1px;
+			background-color: #f00;
+		}		
+		.book .book_list > div {
+			position: relative;
+			padding: 10px 0 10px 60px;
+			border-bottom: 1px solid #d2d2d2;
+		}
+		.book .book_list > div.ack:before{
+		    content: "√";
+		    position: absolute;
+		    top: 10px;
+		    left: 10px;
+		    width: 20px;
+		    height: 20px;
+		    background-color: #008800;
+		    border-radius: 5px;
+		    color: #fff;
+		    text-align: center;
+		}
+		.book .look {
+		    position: absolute;
+		    top: 14px;
+		    right: 17px;			
+		}
+		.book .look > button {
+			cursor: pointer;
+			border: 0;
+		    background-color: #484848;
+		    padding: 10px 20px;
+		    color: #fff;
+		    border-radius: 6px;		
+		}		
+	</style>
+
+	<body class="inpit">
+		<div class="book" type="inpit/assembly" formname="book_a">
+			<div class="head">
+				<div>记事本</div>
+				<div class="look">
+					<button>查看</button>
+				</div>
+			</div>
+			<div class="book_list" radio>
+				<div name="a" value="每月课题研究论文">
+					<div>每月课题研究论文</div>
+				</div>
+				<div name="a" value="项目开发进度50">
+					<div>项目开发进度50%</div>
+				</div>			
+				<div name="a" value="购票VR设备" >
+					<div>购票VR设备</div>
+				</div>			
+				<div name="a" value="上海COSPLAY女装(迷)" >
+					<div>上海COSPLAY女装(迷)</div>
+				</div>	
+				<div name="a" value="19日去北京出差，找华领导问候">
+					<div>19日去北京出差，找华领导问候</div>
+				</div>					
+				<div name="a" value="明天下午去星巴克赴约">
+					<div>明天下午去星巴克赴约</div>
+				</div>
+				<div name="a" value="写小说,做条咸鱼,每天保存微笑">
+					<div><label><input type="checkbox" checked>写小说</label></div>
+					<div><label><input type="checkbox">做条咸鱼</label></div>
+					<div><label><input type="checkbox">每天保存微笑</label></div>
+				</div>
+			</div>	
+		</div>
+		
+		<script type="text/javascript" src="../../js/jquery-2.1.0.js"></script>
+		<script type="text/javascript" src="../../js/inpitassembly-2.0.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("[type='inpit/assembly']").inpitassembly({
+					selected:"ack",
+					ischeck_:true,
+					ischeck_class:true,					
+					selected_data:[
+						{
+							formname:"book_a",
+							name:"a",
+							data:["19日去北京出差，找华领导问候","明天下午去星巴克赴约","购票VR设备"]
+						}
+					],
+					on:function(e,o){
+						console.log(o);
+					}
+				});
+								
+//				$("[type='inpit/assembly']").inpitassembly("remove",[{
+//					name:"book_a",
+//					data:["购票VR设备","明天下午去星巴克赴约"]
+//				}])		
+//				
+//				$("[type='inpit/assembly']").inpitassembly("disabled",[{
+//					name:"book_a",
+//					data:["每月课题研究论文"]
+//				}])					
+				
+				$("[type='inpit/assembly']").find("button").click(function(){
+					var val = check_result($(this));
+					alert(val[0].data);
+				});				
+			})			
+		</script>
+	</body>
+</html>

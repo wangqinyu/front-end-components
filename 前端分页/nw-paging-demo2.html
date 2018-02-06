@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>自制实用分页插件重制版</title>
+    <meta charset="utf-8" />
+    <link href="nw-paging-default2.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .width {
+            width: 1100px;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align:center;height: 120px;background-color: #e2e7ff;padding-top:20px;">
+        <h3 class="width" style="color: #3F51B5;text-align:left;margin:0px auto;">示例3：精简模式二</h3>
+        <h3>引用样式: nw-paging-default2.css</h3>
+        <br />
+        <div id="page0"></div>
+    </div>
+    <script src="nw-paging.min.js"></script>
+    <script type="text/javascript">
+        var div0 = document.getElementById("page0");
+        var api = nw.paging(div0, {
+            total: 88,
+            current: 8,
+            showPage: 10,
+            showType: 2,
+            prevText: "上一页",
+            nextText: "下一页",
+            firstText: "首页",
+            lastText: "尾页",
+            jumpText: "跳转",
+            clickBack: function (api) {
+                alert("你点击了第" + api.getConfig().current + "页");
+            }
+        });
+
+        //所有可用参数,详请请运行本页查看
+        //total: 0,
+        //current: 0,
+        //showPage: 9,
+        //showType: 0,
+        //autoHide: false,
+        //repeatClick: false,
+        //clickDraw: true,
+        //prevText: u,
+        //nextText: u,
+        //firstText: u,
+        //lastText: u,
+        //jumpText: u,
+        //clickBack: function (api) { },
+        //drawBack: function (status,api) { },
+        //initBack: function (api) { }
+
+        //所有可用api接口,详请请运行本页查看
+        //refresh()
+        //getConfig()
+        //getDoms(filter)
+    </script>
+</body>
+</html>

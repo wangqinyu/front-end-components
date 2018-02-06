@@ -1,0 +1,127 @@
+﻿
+.pg_cn {
+    position: relative;
+}
+
+    .pg_cn span {
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none;
+        -ms-user-select: none; /*IE10以上*/
+        user-select: none;
+    }
+
+.pg_first {
+    background-color: #f0f99c;
+    padding: 5px 6px;
+    margin-right: 5px;
+    border: 1px solid #8c8988;
+}
+
+    .pg_first:hover {
+        background-color: #FFEB3B;
+    }
+
+.pg_prev {
+    background-color: #f0f99c;
+    padding: 5px 6px;
+    margin-right: 5px;
+    border: 1px solid #8c8988;
+}
+
+    .pg_prev:hover {
+        background-color: #FFEB3B;
+    }
+
+.pg_m {
+}
+
+.pg_s {
+}
+
+.pg_item {
+    background-color: #f0f99c;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: 1px solid #8c8988;
+}
+
+    .pg_item:hover {
+        background-color: #FFEB3B;
+    }
+
+.pg_next {
+    background-color: #f0f99c;
+    padding: 5px 6px;
+    margin-right: 5px;
+    border: 1px solid #8c8988;
+}
+
+    .pg_next:hover {
+        background-color: #FFEB3B;
+    }
+
+.pg_last {
+    background-color: #f0f99c;
+    padding: 5px 6px;
+    margin-right: 5px;
+    border: 1px solid #8c8988;
+}
+
+    .pg_last:hover {
+        background-color: #FFEB3B;
+    }
+
+.pg_wrap {
+    padding: 5px 0px;
+    margin-right: 5px;
+    border: 1px solid #8c8988;
+    background: #fff;
+    cursor: text !important;
+}
+
+.pg_input {
+    border: none;
+    width: 70px;
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+}
+
+.pg_jump {
+    background-color: #f0f99c;
+    padding: 5px 6px;
+    margin-right: 5px;
+    border: 1px solid #8c8988;
+}
+
+    .pg_jump:hover {
+        background-color: #FFEB3B;
+    }
+
+.pg_current {
+    background-color: #8BC34A;
+    color: #fff;
+}
+
+    .pg_current:hover {
+        background-color: #8BC34A;
+    }
+
+.pg_disabled {
+    cursor: not-allowed !important;
+    border: 1px solid #DDD !important;
+    background-color: #F5F5F5 !important;
+    color: #ACA899 !important;
+}
+
+    .pg_disabled > input {
+        cursor: not-allowed !important;
+        background-color: #F5F5F5 !important;
+        color: #ACA899 !important;
+        visibility: hidden;
+    }
+
+.pg_fixed {
+}
